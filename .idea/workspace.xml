@@ -5,23 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d46dcfa0-281f-4ba8-85f4-c950edbcab49" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/ALU.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/ProcessingUnit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/Register.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/AddressResolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ControlUnit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/Decoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ValueParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/CommandTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/DecoderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/ValueParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/exceptions/NoMatchingAddressFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/SubUnit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/StorageManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/StorageManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/utils/AddressTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/Printable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/StorageSlot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/AddressResolverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/AddressResolverTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/ALU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/ALU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/register/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ControlUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ControlUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/Decoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/Decoder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +25,16 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -55,9 +58,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.AddressResolverTest.executor": "Run",
+    "Gradle.AddressTest.executor": "Run",
     "Gradle.CommandTest.executor": "Run",
     "Gradle.DecoderTest.executor": "Run",
     "Gradle.DecoderTest.testeDecodeWithAddress.executor": "Run",
+    "Gradle.StorageManagerTest.executor": "Run",
     "Gradle.ValueParserTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -71,8 +76,8 @@
       <recent name="$PROJECT_DIR$/src/main/java/de/dhbw" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.DecoderTest.testeDecodeWithAddress">
-    <configuration name="AddressResolverTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.StorageManagerTest">
+    <configuration name="AddressTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -85,7 +90,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;units.control.AddressResolverTest&quot;" />
+            <option value="&quot;utils.AddressTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -168,7 +173,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ValueParserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="StorageManagerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -181,7 +186,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;units.control.ValueParserTest&quot;" />
+            <option value="&quot;units.control.StorageManagerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -194,11 +199,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.StorageManagerTest" />
+        <item itemvalue="Gradle.AddressTest" />
         <item itemvalue="Gradle.DecoderTest.testeDecodeWithAddress" />
         <item itemvalue="Gradle.DecoderTest" />
         <item itemvalue="Gradle.CommandTest" />
-        <item itemvalue="Gradle.ValueParserTest" />
-        <item itemvalue="Gradle.AddressResolverTest" />
       </list>
     </recent_temporary>
   </component>

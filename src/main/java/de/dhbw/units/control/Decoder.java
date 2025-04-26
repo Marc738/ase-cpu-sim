@@ -15,7 +15,7 @@ public class Decoder {
         addressResolver = new AddressResolver();
     }
 
-    public Result<Instruction> decode(ProcessingUnit[] storageUnits, Command command) {
+    public Result<Instruction[]> decode(ProcessingUnit[] storageUnits, Command command) {
         String keyword = command.getKeyword();
         Value[] values = new Value[command.getParams().size()];
 
@@ -37,6 +37,6 @@ public class Decoder {
                 }
             }
         }
-        return Result.ok(new Instruction(keyword, values));
+        return Result.ok(new Instruction[]{new Instruction(keyword, values)});
     }
 }

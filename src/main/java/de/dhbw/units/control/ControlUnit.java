@@ -6,12 +6,21 @@ import de.dhbw.utils.result.Result;
 public class ControlUnit {
 
     private final ProcessingUnit[] processingUnits;
+    private final Decoder decoder;
+    private final StorageManager storageManager;
 
-    public ControlUnit(ProcessingUnit[] processingUnits) {
+    public ControlUnit(ProcessingUnit[] processingUnits, Decoder decoder, StorageManager storageManager) {
         this.processingUnits = processingUnits;
+        this.decoder = decoder;
+        this.storageManager = storageManager;
     }
 
     public Result<?> process(Command command) {
+        // Decode Command to Instruction[]
+        // mv r1 r2 => {get r1, set r2 [valueOfR1]}
+        decoder.decode(processingUnits, command);
+
+        /
         Result<?> matchingProcessingUnitResult = findMatchingProcessingUnit(command);
         if(matchingProcessingUnitResult instanceof Result.Error<?> error) {
             return error;
