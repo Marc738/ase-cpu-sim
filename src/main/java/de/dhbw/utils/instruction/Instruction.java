@@ -2,25 +2,25 @@ package de.dhbw.utils.instruction;
 
 public class Instruction {
     private final String keyword;
-    private final Value[] values;
+    private final InstructionValue[] instructionValues;
 
-    public Instruction(String keyword, Value[] values) {
+    public Instruction(String keyword, InstructionValue[] instructionValues) {
         this.keyword = keyword;
-        this.values = values;
+        this.instructionValues = instructionValues;
     }
 
     public String getKeyword() {
         return keyword;
     }
 
-    public Value[] getValues() {
-        return values;
+    public InstructionValue[] getValues() {
+        return instructionValues;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(keyword);
-        for (Value v : values) {
+        for (InstructionValue v : instructionValues) {
             sb.append(" [");
             for (boolean b : v.getWord().getValue()) {
                 sb.append(b ? "1" : "0");

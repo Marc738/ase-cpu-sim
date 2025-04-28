@@ -5,7 +5,7 @@ import de.dhbw.units.control.AddressResolver;
 import de.dhbw.utils.address.Address;
 import de.dhbw.utils.data.Word;
 import de.dhbw.utils.instruction.Instruction;
-import de.dhbw.utils.instruction.Value;
+import de.dhbw.utils.instruction.InstructionValue;
 import de.dhbw.utils.result.Result;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -56,13 +56,13 @@ public class AddressResolverTest {
         word.setValue(new boolean[Word.WORD_SIZE]);
 
         ProcessingUnit unit = new TestStorageUnit(address, word);
-        Result<Value> result = resolver.getAddressAndValue(new ProcessingUnit[]{unit}, "r5");
+        Result<InstructionValue> result = resolver.getAddressAndValue(new ProcessingUnit[]{unit}, "r5");
 
         assertTrue(result instanceof Result.Ok);
-        Value value = ((Result.Ok<Value>) result).getValue();
-        assertEquals("r", value.getAddress().getPrefix());
-        assertEquals(5, value.getAddress().getIndex());
-        assertArrayEquals(word.getValue(), value.getWord().getValue());
+        InstructionValue instructionValue = ((Result.Ok<InstructionValue>) result).getValue();
+        assertEquals("r", instructionValue.getAddress().getPrefix());
+        assertEquals(5, instructionValue.getAddress().getIndex());
+        assertArrayEquals(word.getValue(), instructionValue.getWord().getValue());
     }
 
     @Test
@@ -75,7 +75,7 @@ public class AddressResolverTest {
 
         ProcessingUnit unit = new TestStorageUnit(address, word);
 
-        Result<Value> result = resolver.getAddressAndValue(new ProcessingUnit[]{unit}, "!!invalid");
+        Result<InstructionValue> result = resolver.getAddressAndValue(new ProcessingUnit[]{unit}, "!!invalid");
 
         assertTrue(result instanceof Result.Error);
     }
@@ -89,7 +89,7 @@ public class AddressResolverTest {
         dummy.setValue(new boolean[Word.WORD_SIZE]);
 
         ProcessingUnit unit = new TestStorageUnit(known, dummy);
-        Result<Value> result = resolver.getAddressAndValue(new ProcessingUnit[]{unit}, "r2");
+        Result<InstructionValue> result = resolver.getAddressAndValue(new ProcessingUnit[]{unit}, "r2");
 
         assertTrue(result instanceof Result.Error);
     }

@@ -4,24 +4,36 @@ import de.dhbw.units.ProcessingUnit;
 import de.dhbw.utils.address.Address;
 import de.dhbw.utils.data.Word;
 import de.dhbw.utils.instruction.Instruction;
-import de.dhbw.utils.instruction.Value;
+import de.dhbw.utils.instruction.InstructionValue;
 import de.dhbw.utils.result.Result;
 
 public class StorageManager {
 
-    private static final String KEYWORD = "mv";
+    private static final String SET = "set";
+    private static final String GET = "get";
 
     public Result<?> canProcess(Instruction instruction) {
-        if(instruction.getKeyword().contentEquals(KEYWORD)) {
-            Value[] values = instruction.getValues();
-            if (values.length == 2) {
-                if(values[0].getAddress() != null && values[1].getAddress() != null) {
+        if(instruction.getKeyword().contentEquals(SET)) {
+            InstructionValue[] instructionValues = instruction.getValues();
+            if (instructionValues.length == 2) {
+                if(instructionValues[0].getAddress() != null) {
                     return Result.ok();
                 } else {
-                    return Result.error(new Exception("Not all arguments are addresses"));
+                    return Result.error(new Exception("The first arg must be an address"));
                 }
             } else {
-                return Result.error(new Exception("Number of values don't match"));
+                return Result.error(new Exception("Number of args don't match"));
+            }
+        } else if(instruction.getKeyword().contentEquals(GET)) {
+            InstructionValue[] instructionValues = instruction.getValues();
+            if (instructionValues.length == 1) {
+                if(instructionValues[0].getAddress() != null) {
+                    return Result.ok();
+                } else {
+                    return Result.error(new Exception("The arg must be an address"));
+                }
+            } else {
+                return Result.error(new Exception("Number of args don't match"));
             }
         } else {
             return Result.error(new Exception("Keyword mismatching"));
@@ -33,16 +45,31 @@ public class StorageManager {
         if(canProcessResult instanceof Result.Error<?>) {
             return canProcessResult;
         }
-        Value[] values = instruction.getValues();
-        Address targetAddress = values[0].getAddress();
-        Word targetWord = values[1].getWord();
-        Result<ProcessingUnit> findUnitResult = findUnitWithMatchingAddress(units, targetAddress);
-        if(findUnitResult instanceof Result.Ok<ProcessingUnit> finUnitOk) {
-            ProcessingUnit unit = finUnitOk.getValue();
-            Result<?> writeUnitResult = unit.write(targetAddress, targetWord);
-            return writeUnitResult;
+        if(instruction.getKeyword().contentEquals(SET)) {
+            InstructionValue[] instructionValues = instruction.getValues();
+            Address targetAddress = instructionValues[0].getAddress();
+            Word targetWord = instructionValues[1].getWord();
+            Result<ProcessingUnit> findUnitResult = findUnitWithMatchingAddress(units, targetAddress);
+            if(findUnitResult instanceof Result.Ok<ProcessingUnit> findUnitOk) {
+                ProcessingUnit unit = findUnitOk.getValue();
+                Result<?> writeUnitResult = unit.write(targetAddress, targetWord);
+                return writeUnitResult;
+            } else {
+                return findUnitResult;
+            }
+        } else if(instruction.getKeyword().contentEquals(GET)) {
+            InstructionValue[] instructionValues = instruction.getValues();
+            Address targetAddress = instructionValues[0].getAddress();
+            Result<ProcessingUnit> findUnitResult = findUnitWithMatchingAddress(units, targetAddress);
+            if(findUnitResult instanceof Result.Ok<ProcessingUnit> findUnitOk) {
+                ProcessingUnit unit = findUnitOk.getValue();
+                Result<Word> readUnitResult = unit.read(targetAddress);
+                return readUnitResult;
+            } else {
+                return findUnitResult;
+            }
         } else {
-            return findUnitResult;
+            return Result.error(new Exception("Keyword mismatching"));
         }
     }
 

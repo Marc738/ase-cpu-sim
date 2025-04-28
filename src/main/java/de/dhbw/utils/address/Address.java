@@ -2,6 +2,8 @@ package de.dhbw.utils.address;
 
 import de.dhbw.utils.result.Result;
 
+import java.util.Objects;
+
 public class Address {
 
     private final String prefix;
@@ -38,4 +40,20 @@ public class Address {
         return null;
     }
 
+    public boolean equals(Address address) {
+        return address.getPrefix().contentEquals(prefix) && address.getIndex() == index;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true; // Wenn beide Referenzen gleich sind
+        if (obj == null || getClass() != obj.getClass()) return false; // Null-Prüfung und gleiche Klasse
+        Address address = (Address) obj; // Casten auf die passende Klasse
+        return index == address.index && prefix.equals(address.prefix); // Vergleich der Attribute
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(prefix, index); // Konsistenter hashCode
+    }
 }

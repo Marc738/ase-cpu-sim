@@ -5,16 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d46dcfa0-281f-4ba8-85f4-c950edbcab49" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/exceptions/NoMatchingAddressFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/SubUnit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/StorageManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/StorageManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/utils/AddressTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/notes.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/exceptions/UnexpectedResultException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/subunit/Operator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/subunit/OperatorResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/subunit/SubUnit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/subunit/arithmetic/AddOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/subunit/arithmetic/ArithmeticSubUnit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/subunit/arithmetic/SubtractOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/data/StorageSpace.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/units/alu/ALUTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/units/alu/subunit/arithmetic/AddOperatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/units/alu/subunit/arithmetic/ArithmeticSubUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/units/alu/subunit/arithmetic/SubtractOperatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/units/register/RegisterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/utils/StorageSpaceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/ALU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/ALU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/register/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/ALU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/ALU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/SubUnit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/AddressResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/AddressResolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ControlUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ControlUnit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/Decoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/Decoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/StorageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/StorageManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ValueParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ValueParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/register/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/register/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/address/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/address/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/instruction/Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/instruction/Instruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/instruction/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/instruction/InstructionValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/AddressResolverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/AddressResolverTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/StorageManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/StorageManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/ValueParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/InstructionValueParserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,13 +53,35 @@
         <task path="$PROJECT_DIR$">
           <activation />
         </task>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ase-cpu-sim" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ase-cpu-sim" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ase-cpu-sim" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -46,9 +89,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2wBftUFFoMi63exDw28Q5jfkp3P" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -57,13 +100,28 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.ALUTest.executor": "Run",
+    "Gradle.ALUTest.testProcessAddition.executor": "Run",
+    "Gradle.ALUTest.testProcessSubtraction.executor": "Run",
+    "Gradle.ALUTest.testReadAndWrite.executor": "Run",
+    "Gradle.AddOperatorTest.executor": "Run",
     "Gradle.AddressResolverTest.executor": "Run",
     "Gradle.AddressTest.executor": "Run",
+    "Gradle.ArithmeticSubUnitTest.executor": "Run",
     "Gradle.CommandTest.executor": "Run",
     "Gradle.DecoderTest.executor": "Run",
     "Gradle.DecoderTest.testeDecodeWithAddress.executor": "Run",
+    "Gradle.RegisterTest.executor": "Run",
     "Gradle.StorageManagerTest.executor": "Run",
+    "Gradle.StorageManagerTest.testeProcessErfolgreichMitZweiProcessingUnits.executor": "Run",
+    "Gradle.StorageSpaceTest.executor": "Run",
+    "Gradle.StorageSpaceTest.testStorageSpacesBuilderAdd.executor": "Run",
+    "Gradle.StorageSpaceTest.testStorageSpacesBuilderAddCount.executor": "Run",
+    "Gradle.StorageSpaceTest.testStorageSpacesBuilderAddFromTo.executor": "Run",
+    "Gradle.SubtractOperatorTest.executor": "Run",
+    "Gradle.SubtractOperatorTest.testeSubtraktionMitBorrow.executor": "Run",
     "Gradle.ValueParserTest.executor": "Run",
+    "Gradle.ase-cpu-sim [test].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "dev",
@@ -77,7 +135,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.StorageManagerTest">
-    <configuration name="AddressTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ALUTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -90,7 +148,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;utils.AddressTest&quot;" />
+            <option value="&quot;units.alu.ALUTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -101,7 +159,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="CommandTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RegisterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -114,55 +172,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;units.control.CommandTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="DecoderTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;units.control.DecoderTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="DecoderTest.testeDecodeWithAddress" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;units.control.DecoderTest.testeDecodeWithAddress&quot;" />
+            <option value="&quot;units.register.RegisterTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -197,13 +207,59 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="StorageManagerTest.testeProcessErfolgreichMitZweiProcessingUnits" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;units.control.StorageManagerTest.testeProcessErfolgreichMitZweiProcessingUnits&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ase-cpu-sim [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.StorageManagerTest" />
-        <item itemvalue="Gradle.AddressTest" />
-        <item itemvalue="Gradle.DecoderTest.testeDecodeWithAddress" />
-        <item itemvalue="Gradle.DecoderTest" />
-        <item itemvalue="Gradle.CommandTest" />
+        <item itemvalue="Gradle.StorageManagerTest.testeProcessErfolgreichMitZweiProcessingUnits" />
+        <item itemvalue="Gradle.RegisterTest" />
+        <item itemvalue="Gradle.ase-cpu-sim [test]" />
+        <item itemvalue="Gradle.ALUTest" />
       </list>
     </recent_temporary>
   </component>

@@ -2,12 +2,12 @@ package units.control;
 
 import de.dhbw.units.control.ValueParser;
 import de.dhbw.utils.data.Word;
-import de.dhbw.utils.instruction.Value;
+import de.dhbw.utils.instruction.InstructionValue;
 import de.dhbw.utils.result.Result;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ValueParserTest {
+public class InstructionValueParserTest {
 
     private final ValueParser parser = new ValueParser();
 
@@ -28,17 +28,17 @@ public class ValueParserTest {
     @Test
     void testeValueErkennung() {
         String param = "#10101010";
-        Result<Value> result = parser.getValue(param);
+        Result<InstructionValue> result = parser.getValue(param);
         assertTrue(result instanceof Result.Ok);
-        Value value = ((Result.Ok<Value>) result).getValue();
-        assertNotNull(value.getWord());
-        assertEquals(Word.WORD_SIZE, value.getWord().getValue().length);
+        InstructionValue instructionValue = ((Result.Ok<InstructionValue>) result).getValue();
+        assertNotNull(instructionValue.getWord());
+        assertEquals(Word.WORD_SIZE, instructionValue.getWord().getValue().length);
     }
 
     @Test
     void testeValueMitBuchstaben() {
         String param = "#10A01010";
-        Result<Value> result = parser.getValue(param);
+        Result<InstructionValue> result = parser.getValue(param);
         assertTrue(result instanceof Result.Error);
     }
 }

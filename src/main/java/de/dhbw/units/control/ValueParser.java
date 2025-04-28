@@ -2,7 +2,7 @@ package de.dhbw.units.control;
 
 import de.dhbw.utils.address.Address;
 import de.dhbw.utils.data.Word;
-import de.dhbw.utils.instruction.Value;
+import de.dhbw.utils.instruction.InstructionValue;
 import de.dhbw.utils.result.Result;
 
 public class ValueParser {
@@ -11,7 +11,7 @@ public class ValueParser {
         return param.matches("#[01]{" + Word.WORD_SIZE + "}");
     }
 
-    public Result<Value> getValue(String param) {
+    public Result<InstructionValue> getValue(String param) {
         boolean[] value = new boolean[Word.WORD_SIZE];
         char[] paramChars = param.substring(1).toCharArray();
 
@@ -28,7 +28,7 @@ public class ValueParser {
         Word word = new Word();
         Result<?> setValueResult = word.setValue(value);
         if (setValueResult instanceof Result.Ok<?>) {
-            return Result.ok(new Value(Address.defaultAddress(), word));
+            return Result.ok(new InstructionValue(Address.defaultAddress(), word));
         } else {
             return (Result.Error) setValueResult;
         }

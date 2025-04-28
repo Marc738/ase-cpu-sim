@@ -1,6 +1,7 @@
 package de.dhbw.units.control;
 
 import de.dhbw.units.ProcessingUnit;
+import de.dhbw.utils.instruction.Instruction;
 import de.dhbw.utils.result.Result;
 
 public class ControlUnit {
@@ -16,21 +17,41 @@ public class ControlUnit {
     }
 
     public Result<?> process(Command command) {
-        // Decode Command to Instruction[]
-        // mv r1 r2 => {get r1, set r2 [valueOfR1]}
-        decoder.decode(processingUnits, command);
-
-        /
-        Result<?> matchingProcessingUnitResult = findMatchingProcessingUnit(command);
-        if(matchingProcessingUnitResult instanceof Result.Error<?> error) {
-            return error;
+        Result<Instruction> instructionResult = decoder.decode(processingUnits, command);
+        if(instructionResult instanceof Result.Ok<Instruction> instructionOk) {
+            Instruction instruction = instructionOk.getValue();
+            Result<?> canProcessResult = storageManager.canProcess(instruction);
+            if(canProcessResult instanceof Result.Ok<?> canProcessOk) {
+                // StorageManager
+                return processInstructionInStorageManager(instruction);
+            } else {
+                // Units
+                return processInstructionInProcessingUnit(instruction);
+            }
+        } else {
+            return instructionResult;
         }
-        return Result.error(new Exception("Not implemented!"));
     }
 
-    private Result<?> findMatchingProcessingUnit(Command command) {
+    private Result<?> processInstructionInStorageManager(Instruction instruction) {
+        Result<?> processResult = storageManager.process(processingUnits, instruction);
+        return processResult;
+    }
+
+    private Result<?> processInstructionInProcessingUnit(Instruction instruction) {
+        Result<ProcessingUnit> processingUnitResult = findMatchingProcessingUnit(instruction);
+        if(processingUnitResult instanceof Result.Ok<ProcessingUnit> processingUnitOk) {
+            ProcessingUnit unit = processingUnitOk.getValue();
+            Result<?> processResult = unit.process(instruction);
+            return processResult;
+        } else {
+            return processingUnitResult;
+        }
+    }
+
+    private Result<ProcessingUnit> findMatchingProcessingUnit(Instruction instruction) {
         for(ProcessingUnit processingUnit : processingUnits) {
-            Result<?> canProcessResult = processingUnit.canProcess(command.getKeyword());
+            Result<?> canProcessResult = processingUnit.canProcess(instruction.getKeyword());
             if(canProcessResult instanceof Result.Ok<?>) {
                 return Result.ok(processingUnit);
             }

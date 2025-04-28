@@ -5,7 +5,7 @@ import de.dhbw.units.ProcessingUnit;
 import de.dhbw.utils.address.Address;
 import de.dhbw.utils.data.Word;
 import de.dhbw.utils.instruction.Instruction;
-import de.dhbw.utils.instruction.Value;
+import de.dhbw.utils.instruction.InstructionValue;
 import de.dhbw.utils.result.Result;
 import org.junit.jupiter.api.Test;
 
@@ -15,14 +15,12 @@ import static org.mockito.Mockito.*;
 public class StorageManagerTest {
 
     @Test
-    public void testeCanProcessErfolg() {
+    public void testeCanProcessSetErfolg() {
         Address a1 = new Address("r", 1);
-        Address a2 = new Address("r", 2);
         Word w = new Word();
-
-        Value v1 = new Value(a1, w);
-        Value v2 = new Value(a2, w);
-        Instruction instr = new Instruction("mv", new Value[]{v1, v2});
+        InstructionValue v1 = new InstructionValue(a1, null);
+        InstructionValue v2 = new InstructionValue(null, w);
+        Instruction instr = new Instruction("set", new InstructionValue[]{v1, v2});
 
         StorageManager sm = new StorageManager();
         Result<?> res = sm.canProcess(instr);
@@ -31,25 +29,27 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void testeCanProcessFalschesKeyword() {
-        Instruction instr = new Instruction("add", new Value[2]);
+    public void testeCanProcessGetErfolg() {
+        Address a1 = new Address("r", 1);
+        InstructionValue v1 = new InstructionValue(a1, null);
+        Instruction instr = new Instruction("get", new InstructionValue[]{v1});
+
         StorageManager sm = new StorageManager();
         Result<?> res = sm.canProcess(instr);
-        assertTrue(res instanceof Result.Error<?>);
+
+        assertTrue(res instanceof Result.Ok<?>);
     }
 
     @Test
-    public void testeProcessErfolgreich() {
+    public void testeProcessSetErfolgreich() {
         Address a1 = new Address("r", 1);
-        Address a2 = new Address("r", 2);
         Word w = new Word();
-
-        Value target = new Value(a1, w);
-        Value source = new Value(a2, w);
-        Instruction instr = new Instruction("mv", new Value[]{target, source});
+        InstructionValue v1 = new InstructionValue(a1, null);
+        InstructionValue v2 = new InstructionValue(null, w);
+        Instruction instr = new Instruction("set", new InstructionValue[]{v1, v2});
 
         ProcessingUnit mockUnit = mock(ProcessingUnit.class);
-        when(mockUnit.read(a1)).thenReturn(Result.ok(w));
+        when(mockUnit.read(a1)).thenReturn(Result.ok(new Word())); // findUnitWithMatchingAddress
         when(mockUnit.write(a1, w)).thenReturn(Result.ok());
 
         StorageManager sm = new StorageManager();
@@ -59,22 +59,30 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void testeProcessOhnePassendeUnit() {
+    public void testeProcessGetErfolgreich() {
         Address a1 = new Address("r", 1);
-        Address a2 = new Address("r", 2);
         Word w = new Word();
-
-        Value target = new Value(a1, w);
-        Value source = new Value(a2, w);
-        Instruction instr = new Instruction("mv", new Value[]{target, source});
+        InstructionValue v1 = new InstructionValue(a1, null);
+        Instruction instr = new Instruction("get", new InstructionValue[]{v1});
 
         ProcessingUnit mockUnit = mock(ProcessingUnit.class);
-        when(mockUnit.read(a1)).thenReturn(Result.error(new Exception()));
+        when(mockUnit.read(a1)).thenReturn(Result.ok(w)); // wird beim Finden und beim Lesen genutzt
 
         StorageManager sm = new StorageManager();
         Result<?> res = sm.process(new ProcessingUnit[]{mockUnit}, instr);
 
+        assertTrue(res instanceof Result.Ok<?>);
+    }
+
+    @Test
+    public void testeProcessMitFalschemKeyword() {
+        Address a1 = new Address("r", 1);
+        InstructionValue v1 = new InstructionValue(a1, null);
+        Instruction instr = new Instruction("unknown", new InstructionValue[]{v1});
+
+        StorageManager sm = new StorageManager();
+        Result<?> res = sm.process(new ProcessingUnit[]{}, instr);
+
         assertTrue(res instanceof Result.Error<?>);
     }
 }
-
