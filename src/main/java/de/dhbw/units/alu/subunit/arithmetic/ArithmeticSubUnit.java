@@ -7,7 +7,7 @@ import de.dhbw.utils.data.Word;
 import de.dhbw.utils.result.Result;
 
 public class ArithmeticSubUnit implements SubUnit {
-// todo: let only accept instruction with keyword, op1 and op2 should be loaded
+    // todo: let only accept instruction with keyword, op1 and op2 should be loaded
     private Operator[] operators;
 
     public ArithmeticSubUnit() {

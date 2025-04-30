@@ -35,13 +35,15 @@ class ALUTest {
         Word op1Word = new Word();
         op1Word.setValue(new boolean[]{false, false, false, false, false, false, false, true});
         op1.setWord(op1Word); // 1
+        alu.write(ALU.OP1, op1Word);
         Word op2Word = new Word();
         op2Word.setValue(new boolean[]{false, false, false, true, false, false, false, false});
         op2.setWord(op2Word); // 2
+        alu.write(ALU.OP2, op2Word);
 
         // Erstelle eine Instruction
-        InstructionValue[] values = {new InstructionValue(op1.getAddress(), op1.getWord()), new InstructionValue(op2.getAddress(), op2.getWord())};
-        Instruction instruction = new Instruction("add", values);
+        //InstructionValue[] values = {new InstructionValue(op1.getAddress(), op1.getWord()), new InstructionValue(op2.getAddress(), op2.getWord())};
+        Instruction instruction = new Instruction("add", new InstructionValue[]{});
 
         // Test, ob die ALU die Operation erfolgreich ausführt
         Result<?> result = alu.process(instruction);
@@ -64,9 +66,11 @@ class ALUTest {
         Word op1Word = new Word();
         op1Word.setValue(new boolean[]{false, false, false, false, false, false, true, true});
         op1.setWord(op1Word); // 1
+        alu.write(ALU.OP1, op1Word);
         Word op2Word = new Word();
         op2Word.setValue(new boolean[]{false, false, false, false, false, false, false, true});
         op2.setWord(op2Word); // 2
+        alu.write(ALU.OP2, op2Word);
 
         // Erstelle eine Instruction für Subtraktion
         InstructionValue[] values = {new InstructionValue(op1.getAddress(), op1.getWord()), new InstructionValue(op2.getAddress(), op2.getWord())};

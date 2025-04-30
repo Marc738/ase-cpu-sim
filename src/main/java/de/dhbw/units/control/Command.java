@@ -7,19 +7,19 @@ import java.util.List;
 public class Command {
 
     private final String keyword;
-    private final List<String> params;
+    private final List<String> args;
 
     private Command(CommandBuilder commandBuilder) {
         this.keyword = commandBuilder.keyword;
-        this.params = commandBuilder.params;
+        this.args = commandBuilder.args;
     }
 
     public String getKeyword() {
         return keyword;
     }
 
-    public List<String> getParams() {
-        return params;
+    public List<String> getArgs() {
+        return args;
     }
 
     public static Command fromString(String input) {
@@ -28,21 +28,21 @@ public class Command {
         List<String> params = Arrays.asList(Arrays.copyOfRange(parts, 1, parts.length));
         return new CommandBuilder()
                 .setKeyword(keyword)
-                .setParams(params)
+                .setArgs(params)
                 .build();
     }
 
     public static class CommandBuilder {
         String keyword;
-        List<String> params = new ArrayList<>();
+        List<String> args = new ArrayList<>();
 
         public CommandBuilder setKeyword(String keyword) {
             this.keyword = keyword;
             return this;
         }
 
-        public CommandBuilder setParams(List<String> params) {
-            this.params = params;
+        public CommandBuilder setArgs(List<String> args) {
+            this.args = args;
             return this;
         }
 

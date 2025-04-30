@@ -14,7 +14,7 @@ class CommandTest {
         Command command = Command.fromString(input);
 
         assertEquals("add", command.getKeyword());
-        assertEquals(List.of("#01010101", "r2"), command.getParams());
+        assertEquals(List.of("#01010101", "r2"), command.getArgs());
     }
 
     @Test
@@ -23,17 +23,17 @@ class CommandTest {
         Command command = Command.fromString(input);
 
         assertEquals("exit", command.getKeyword());
-        assertTrue(command.getParams().isEmpty());
+        assertTrue(command.getArgs().isEmpty());
     }
 
     @Test
     void testeCommandErstellungMitCommandBuilder() {
         Command command = new Command.CommandBuilder()
                 .setKeyword("add")
-                .setParams(List.of("#01010101"))
+                .setArgs(List.of("#01010101"))
                 .build();
 
         assertEquals("add", command.getKeyword());
-        assertEquals(List.of("#01010101"), command.getParams());
+        assertEquals(List.of("#01010101"), command.getArgs());
     }
 }

@@ -11,11 +11,12 @@ public class StorageManager {
 
     private static final String SET = "set";
     private static final String GET = "get";
+    private static final String STORE = "store";
 
     public Result<?> canProcess(Instruction instruction) {
         if(instruction.getKeyword().contentEquals(SET)) {
             InstructionValue[] instructionValues = instruction.getValues();
-            if (instructionValues.length == 2) {
+            if (instructionValues.length == 1) {
                 if(instructionValues[0].getAddress() != null) {
                     return Result.ok();
                 } else {
@@ -35,12 +36,23 @@ public class StorageManager {
             } else {
                 return Result.error(new Exception("Number of args don't match"));
             }
+        } else if(instruction.getKeyword().contentEquals(STORE)) {
+            InstructionValue[] instructionValues = instruction.getValues();
+            if (instructionValues.length == 1) {
+                if(instructionValues[0].getWord() != null) {
+                    return Result.ok();
+                } else {
+                    return Result.error(new Exception("The arg must be an address"));
+                }
+            } else {
+                return Result.error(new Exception("Number of args don't match"));
+            }
         } else {
             return Result.error(new Exception("Keyword mismatching"));
         }
     }
 
-    public Result<?> process(ProcessingUnit[] units, Instruction instruction) {
+    public Result<?> process(ProcessingUnit[] units, Word storedValue, Instruction instruction) {
         Result<?> canProcessResult = canProcess(instruction);
         if(canProcessResult instanceof Result.Error<?>) {
             return canProcessResult;
@@ -48,11 +60,10 @@ public class StorageManager {
         if(instruction.getKeyword().contentEquals(SET)) {
             InstructionValue[] instructionValues = instruction.getValues();
             Address targetAddress = instructionValues[0].getAddress();
-            Word targetWord = instructionValues[1].getWord();
             Result<ProcessingUnit> findUnitResult = findUnitWithMatchingAddress(units, targetAddress);
             if(findUnitResult instanceof Result.Ok<ProcessingUnit> findUnitOk) {
                 ProcessingUnit unit = findUnitOk.getValue();
-                Result<?> writeUnitResult = unit.write(targetAddress, targetWord);
+                Result<?> writeUnitResult = unit.write(targetAddress, storedValue);
                 return writeUnitResult;
             } else {
                 return findUnitResult;
@@ -68,6 +79,11 @@ public class StorageManager {
             } else {
                 return findUnitResult;
             }
+        } else if(instruction.getKeyword().contentEquals(STORE)) {
+            InstructionValue[] instructionValues = instruction.getValues();
+            Word word = instructionValues[0].getWord();
+            storedValue.setValue(word.getValue());
+            return Result.ok();
         } else {
             return Result.error(new Exception("Keyword mismatching"));
         }

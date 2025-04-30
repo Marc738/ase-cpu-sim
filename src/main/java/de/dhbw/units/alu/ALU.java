@@ -13,6 +13,10 @@ import de.dhbw.utils.result.Result;
 
 public class ALU implements ProcessingUnit {
 
+    public static final Address OP1 = new Address("op", 1);
+    public static final Address OP2 = new Address("op", 2);
+    public static final Address RES = new Address("res", 0);
+
     private StorageSpace op1;
     private StorageSpace op2;
     private StorageSpace res0;
@@ -25,9 +29,9 @@ public class ALU implements ProcessingUnit {
     }
 
     private void initStorageSpaces() {
-        op1 = new StorageSpace(new Address("op", 1));
-        op2 = new StorageSpace(new Address("op", 2));
-        res0 = new StorageSpace(new Address("res", 0));
+        op1 = new StorageSpace(OP1);
+        op2 = new StorageSpace(OP2);
+        res0 = new StorageSpace(RES);
     }
 
     private void initSubUnits() {
@@ -50,9 +54,6 @@ public class ALU implements ProcessingUnit {
         for(SubUnit subUnit : subUnits) {
             Result<?> canProcessResult = subUnit.canProcess(instruction.getKeyword());
             if(canProcessResult instanceof Result.Ok<?>) {
-                // todo: bisschen gecheatet
-                op1.setWord(instruction.getValues()[0].getWord());
-                op2.setWord(instruction.getValues()[1].getWord());
                 Result<OperatorResult> subUnitProcessResult = subUnit.process(instruction.getKeyword(), op1.getWord(), op2.getWord());
                 if(subUnitProcessResult instanceof Result.Ok<OperatorResult> subUnitProcessOk) {
                     res0.setWord(subUnitProcessOk.getValue().getResult());
