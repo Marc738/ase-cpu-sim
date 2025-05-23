@@ -38,16 +38,19 @@ public class ControlUnit {
                 // StorageManager
                 Result storageManagerResult = processInstructionInStorageManager(instruction);
                 if(storageManagerResult instanceof Result.Ok<?> storageManagerOk && storageManagerOk.getValue() instanceof Word word) {
-                    storedValue = word;
+                    storedValue.setValue(word.getValue());
                 } else if(storageManagerResult instanceof Result.Error<?> storageManagerError) {
                     return storageManagerError;
                 }
             } else {
                 // Units
-                processInstructionInProcessingUnit(instruction);
+                Result processingInstructionResult = processInstructionInProcessingUnit(instruction);
+                if(processingInstructionResult instanceof Result.Error<?> storageManagerError) {
+                    return storageManagerError;
+                }
             }
         }
-        return Result.ok();
+        return Result.ok(storedValue);
     }
 
     private Result processInstructionInStorageManager(Instruction instruction) {

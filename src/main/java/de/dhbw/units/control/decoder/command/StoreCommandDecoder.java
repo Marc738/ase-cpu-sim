@@ -35,6 +35,6 @@ public class StoreCommandDecoder extends CommandDecoder {
     }
 
     public boolean canDecodeCommand(String keyword, InstructionValue[] instructionValues) {
-        return this.keyword.contentEquals(keyword) && instructionValues.length == 1 && instructionValues[1].getWord() != null;
+        return this.keyword.contentEquals(keyword) && instructionValues.length == 1 && instructionValues[0].getWord() != null;
     }
 }

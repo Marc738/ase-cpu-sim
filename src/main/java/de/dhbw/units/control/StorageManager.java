@@ -75,6 +75,9 @@ public class StorageManager {
             if(findUnitResult instanceof Result.Ok<ProcessingUnit> findUnitOk) {
                 ProcessingUnit unit = findUnitOk.getValue();
                 Result<Word> readUnitResult = unit.read(targetAddress);
+                if(readUnitResult instanceof Result.Ok<Word> wordResult) {
+                    storedValue.setValue(wordResult.getValue().getValue());
+                }
                 return readUnitResult;
             } else {
                 return findUnitResult;

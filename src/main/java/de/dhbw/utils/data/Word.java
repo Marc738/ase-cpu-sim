@@ -41,4 +41,13 @@ public class Word {
         return Result.ok(new Word(bits));
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("#");
+        for (boolean bit : value) {
+            sb.append(bit ? '1' : '0');
+        }
+        return sb.toString();
+    }
+
 }

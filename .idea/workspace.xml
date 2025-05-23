@@ -5,38 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d46dcfa0-281f-4ba8-85f4-c950edbcab49" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/ArgDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/command/AddCommandDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/command/CommandDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/command/GetCommandDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/command/SetCommandDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/command/StoreCommandDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/command/SubtractCommandDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/instruction/types/GetInstruction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/instruction/types/SetInstruction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/instruction/types/StoreInstruction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/instruction/types/UnitInstruction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/ControlUnitTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/decoder/AddCommandDecoderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/decoder/ArgDecoderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/decoder/DecoderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/decoder/SubtractCommandDecoderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/CPUSimulator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/InputConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/InputConverterImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/InputHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/InputHandlerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/OutputHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/OutputHandlerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/io/OutputHandlerImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/ALU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/ALU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/subunit/arithmetic/ArithmeticSubUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/subunit/arithmetic/ArithmeticSubUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/AddressResolver.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ControlUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ControlUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/Decoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/Decoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/StorageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/StorageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ValueParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/command/SetCommandDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/command/SetCommandDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/command/StoreCommandDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/command/StoreCommandDecoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/data/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/data/Word.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/alu/ALUTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/alu/ALUTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/AddressResolverTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/CommandTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/DecoderTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/InstructionValueParserTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/instruction/Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/instruction/Instruction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/units/control/StorageManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/StorageManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,8 +107,10 @@
     "Gradle.DecoderTest.executor": "Run",
     "Gradle.DecoderTest.testeDecodeWithAddress.executor": "Run",
     "Gradle.InstructionValueParserTest.executor": "Run",
+    "Gradle.OutputHandlerImplTest.executor": "Run",
     "Gradle.RegisterTest.executor": "Run",
     "Gradle.StorageManagerTest.executor": "Run",
+    "Gradle.StorageManagerTest.testeCanProcessSetErfolg.executor": "Run",
     "Gradle.StorageManagerTest.testeCanProcessStoreErfolg.executor": "Run",
     "Gradle.StorageManagerTest.testeCanProcessStoreOhneInstructionValue.executor": "Run",
     "Gradle.StorageManagerTest.testeProcessErfolgreichMitZweiProcessingUnits.executor": "Run",
@@ -151,7 +138,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/de/dhbw" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.StorageManagerTest.testeCanProcessStoreOhneInstructionValue">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.dhbw.Main" />
       <module name="ase-cpu-sim.main" />
@@ -165,7 +152,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StorageManagerTest.testeCanProcessStoreErfolg" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="OutputHandlerImplTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -178,7 +165,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;units.control.StorageManagerTest.testeCanProcessStoreErfolg&quot;" />
+            <option value="&quot;io.OutputHandlerImplTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -189,7 +176,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="StorageManagerTest.testeCanProcessStoreOhneInstructionValue" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="StorageManagerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -202,7 +189,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;units.control.StorageManagerTest.testeCanProcessStoreOhneInstructionValue&quot;" />
+            <option value="&quot;units.control.StorageManagerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -213,7 +200,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="StorageManagerTest.testeProcessStoreErfolgreich" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="StorageManagerTest.testeCanProcessSetErfolg" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -226,7 +213,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;units.control.StorageManagerTest.testeProcessStoreErfolgreich&quot;" />
+            <option value="&quot;units.control.StorageManagerTest.testeCanProcessSetErfolg&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -261,11 +248,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.StorageManagerTest.testeCanProcessStoreOhneInstructionValue" />
-        <item itemvalue="Gradle.StorageManagerTest.testeCanProcessStoreErfolg" />
-        <item itemvalue="Gradle.StorageManagerTest.testeProcessStoreErfolgreich" />
-        <item itemvalue="Gradle.ase-cpu-sim [test]" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Gradle.OutputHandlerImplTest" />
+        <item itemvalue="Gradle.ase-cpu-sim [test]" />
+        <item itemvalue="Gradle.StorageManagerTest.testeCanProcessSetErfolg" />
+        <item itemvalue="Gradle.StorageManagerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -297,9 +284,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/de/dhbw/Main.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/main/java/de/dhbw/units/control/StorageManager.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

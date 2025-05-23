@@ -46,6 +46,11 @@ public class Command {
             return this;
         }
 
+        public CommandBuilder addArgs(String arg) {
+            args.add(arg);
+            return this;
+        }
+
         public Command build() {
             return new Command(this);
         }

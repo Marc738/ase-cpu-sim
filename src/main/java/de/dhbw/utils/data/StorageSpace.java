@@ -29,7 +29,7 @@ public class StorageSpace {
 
     public void setWord(Word word) {
         if(word != null) {
-            this.word = word;
+            this.word.setValue(word.getValue());
         }
     }
 

@@ -19,8 +19,7 @@ public class StorageManagerTest {
         Address a1 = new Address("r", 1);
         Word w = new Word();
         InstructionValue v1 = new InstructionValue(a1, null);
-        InstructionValue v2 = new InstructionValue(null, w);
-        Instruction instr = new Instruction("set", new InstructionValue[]{v1, v2});
+        Instruction instr = new Instruction("set", new InstructionValue[]{v1});
 
         StorageManager sm = new StorageManager();
         Result<?> res = sm.canProcess(instr);
