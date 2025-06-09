@@ -1,0 +1,33 @@
+@startuml
+
+class Decoder {
+  - argDecoder : ArgDecoder
+  - commandDecoders : CommandDecoder[]
+  + Decoder(argDecoder: ArgDecoder, commandDecoders: CommandDecoder[])
+  + decode(command: Command) : Result<Instruction[]>
+}
+
+class AddCommandDecoder {
+  + AddCommandDecoder()
+  + decode(keyword: String, instructionValues: InstructionValue[]) : Result<Instruction[]>
+  + canDecodeCommand(keyword: String, instructionValues: InstructionValue[]) : boolean
+}
+
+class SubtractCommandDecoder {
+  + SubtractCommandDecoder()
+  + decode(keyword: String, instructionValues: InstructionValue[]) : Result<Instruction[]>
+  + canDecodeCommand(keyword: String, instructionValues: InstructionValue[]) : boolean
+}
+
+CommandDecoder <|-- AddCommandDecoder
+CommandDecoder <|-- SubtractCommandDecoder
+
+abstract class CommandDecoder {
+  # keyword : String <<final>>
+  + CommandDecoder(keyword: String)
+  + decode(keyword: String, instructionValues: InstructionValue[]) : Result<Instruction[]> <<abstract>>
+}
+
+Decoder --> CommandDecoder
+
+@enduml

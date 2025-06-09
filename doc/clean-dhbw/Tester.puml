@@ -1,0 +1,23 @@
+@startuml ValueObjects
+
+class Address {
+  - index: int
+  - prefix: String
+  + defaultAddress(): Address
+  + parseRawAddress(String): Result<Address>
+}
+
+class Word {
+  - value: boolean[]
+  + fromBinaryString(String): Result<Word>
+  + setValue(boolean[]): Result<?>
+}
+
+class OperatorResult
+
+Address <.. InstructionValue
+Word <.. InstructionValue
+Word <.. ControlUnit
+Word <.. StorageSpace
+
+@enduml

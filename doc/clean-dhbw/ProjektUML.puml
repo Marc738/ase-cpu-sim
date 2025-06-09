@@ -1,0 +1,486 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "de.dhbw.units.control.ControlUnit",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_3082201 { 
+   	label=dhbw
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   CPUSimulator1493163302[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CPUSimulator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   controlUnit: ControlUnit [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   exitCommand: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   inputConverter: InputConverter [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   inputHandler: InputHandler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   outputHandler: OutputHandler [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ run()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+subgraph cluster_1490634010 { 
+   	label=units
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   ALU1199053853[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ALU</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   op1: StorageSpace [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   op2: StorageSpace [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   res0: StorageSpace [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   subUnits: SubUnit[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ canProcess(keyword: String): Result&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- findStorageSpace(address: Address): Result&lt;StorageSpace&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- findSubUnitByKeyword(keyword: String): Result&lt;SubUnit&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- initStorageSpaces()</TD></TR>
+<TR><TD ALIGN="LEFT" >- initSubUnits()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ process(instruction: Instruction): Result&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ read(address: Address): Result&lt;Word&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(address: Address, word: Word): Result&lt;?&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AddCommandDecoder1598166217[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AddCommandDecoder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ canDecodeCommand(keyword: String, instructionValues: InstructionValue[]): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ decode(keyword: String, instructionValues: InstructionValue[]): Result&lt;Instruction[]&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AddOperator992214785[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AddOperator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ process(op1: Word, op2: Word): OperatorResult</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ArgDecoder265793172[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArgDecoder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ decode(args: String[]): Result&lt;InstructionValue[]&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ArithmeticSubUnit992214785[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArithmeticSubUnit</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   operators: Operator[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ canProcess(keyword: String): Result&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ process(keyword: String, op1: Word, op2: Word): Result&lt;OperatorResult&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CommandDecoder1598166217[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CommandDecoder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   keyword: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ decode(keyword: String, instructionValues: InstructionValue[]): Result&lt;Instruction[]&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ControlUnit387713814[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ControlUnit</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   decoder: Decoder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   processingUnits: ProcessingUnit[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   storageManager: StorageManager [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   storedValue: Word [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- findMatchingProcessingUnit(instruction: Instruction): Result&lt;ProcessingUnit&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ process(command: Command): Result&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- processInstructionInProcessingUnit(instruction: Instruction): Result&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- processInstructionInStorageManager(instruction: Instruction): Result</TD></TR>
+<TR><TD ALIGN="LEFT" >- processInstructions(instructions: Instruction[]): Result&lt;?&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Decoder265793172[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Decoder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   argDecoder: ArgDecoder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   commandDecoders: CommandDecoder[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ decode(command: Command): Result&lt;Instruction[]&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GetCommandDecoder1598166217[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GetCommandDecoder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ canDecodeCommand(keyword: String, instructionValues: InstructionValue[]): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ decode(keyword: String, instructionValues: InstructionValue[]): Result&lt;Instruction[]&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Operator1547118407[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Operator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   keyword: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ canProcess(requestKeyword: String): Result&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ process(op1: Word, op2: Word): OperatorResult</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Register989052918[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Register</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   storageSpaces: StorageSpace[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ canProcess(keyword: String): Result&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ process(instruction: Instruction): Result&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ read(address: Address): Result&lt;Word&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(address: Address, word: Word): Result&lt;?&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SetCommandDecoder1598166217[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SetCommandDecoder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ canDecodeCommand(keyword: String, instructionValues: InstructionValue[]): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ decode(keyword: String, instructionValues: InstructionValue[]): Result&lt;Instruction[]&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+StorageManager387713814[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)StorageManager</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ canProcess(instruction: Instruction): Result&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- findUnitWithMatchingAddress(units: ProcessingUnit[], address: Address): Result&lt;ProcessingUnit&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ process(units: ProcessingUnit[], storedValue: Word, instruction: Instruction): Result&lt;?&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+StoreCommandDecoder1598166217[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)StoreCommandDecoder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ canDecodeCommand(keyword: String, instructionValues: InstructionValue[]): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ decode(keyword: String, instructionValues: InstructionValue[]): Result&lt;Instruction[]&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SubtractCommandDecoder1598166217[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SubtractCommandDecoder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ canDecodeCommand(keyword: String, instructionValues: InstructionValue[]): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ decode(keyword: String, instructionValues: InstructionValue[]): Result&lt;Instruction[]&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SubtractOperator992214785[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SubtractOperator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ process(op1: Word, op2: Word): OperatorResult</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1490812508 { 
+   	label=utils
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Address635082991[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Address</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   index: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   prefix: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ defaultAddress(): Address</TD></TR>
+<TR><TD ALIGN="LEFT" >+ parseRawAddress(rawAddress: String): Result&lt;Address&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Error713473001[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Error&lt;T&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   exception: Exception [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Ok713473001[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Ok&lt;T&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   value: T [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Result92913602[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Result&lt;T&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ error(e: Exception): Result&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ok(): Result&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ok(value: T): Result&lt;T&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+StorageSpace719228047[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)StorageSpace</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   address: Address [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   word: Word [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Word719228047[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Word</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   value: boolean[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ fromBinaryString(input: String): Result&lt;Word&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setValue(value: boolean[]): Result&lt;?&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+ALU1199053853 -> ArithmeticSubUnit992214785[arrowhead=none];
+ALU1199053853 -> StorageSpace719228047[label="op1
+[0..1]"];
+ALU1199053853 -> StorageSpace719228047[label="op2
+[0..1]"];
+ALU1199053853 -> StorageSpace719228047[label="res0
+[0..1]"];
+ArgDecoder265793172 -> Address635082991[label="decode() -> parseRawAddress()"];
+ArgDecoder265793172 -> Word719228047[label="decode() -> fromBinaryString()"];
+ArithmeticSubUnit992214785 -> Operator1547118407[label="operators
+[0..*]"];
+CPUSimulator1493163302 -> ControlUnit387713814[label="controlUnit
+[0..1]"];
+CommandDecoder1598166217 -> AddCommandDecoder1598166217[arrowhead=none, arrowtail=empty, dir=both];
+CommandDecoder1598166217 -> GetCommandDecoder1598166217[arrowhead=none, arrowtail=empty, dir=both];
+CommandDecoder1598166217 -> SetCommandDecoder1598166217[arrowhead=none, arrowtail=empty, dir=both];
+CommandDecoder1598166217 -> StoreCommandDecoder1598166217[arrowhead=none, arrowtail=empty, dir=both];
+CommandDecoder1598166217 -> SubtractCommandDecoder1598166217[arrowhead=none, arrowtail=empty, dir=both];
+ControlUnit387713814 -> Decoder265793172[label="decoder
+[0..1]"];
+ControlUnit387713814 -> StorageManager387713814[label="storageManager
+[0..1]"];
+ControlUnit387713814 -> Word719228047[label="storedValue
+[0..1]"];
+Decoder265793172 -> ArgDecoder265793172[label="argDecoder
+[0..1]"];
+Decoder265793172 -> CommandDecoder1598166217[label="commandDecoders
+[0..*]"];
+Operator1547118407 -> AddOperator992214785[arrowhead=none, arrowtail=empty, dir=both];
+Operator1547118407 -> SubtractOperator992214785[arrowhead=none, arrowtail=empty, dir=both];
+Register989052918 -> StorageSpace719228047[label="storageSpaces
+[0..*]"];
+Result92913602 -> Error713473001[arrowhead=none, arrowtail=empty, dir=both];
+Result92913602 -> Ok713473001[arrowhead=none, arrowtail=empty, dir=both];
+StorageManager387713814 -> ALU1199053853[arrowhead=none];
+StorageManager387713814 -> Register989052918[arrowhead=none];
+StorageSpace719228047 -> Address635082991[label="address
+[0..1]"];
+StorageSpace719228047 -> Word719228047[label="word
+[0..1]"];
+    
+}
+@enduml

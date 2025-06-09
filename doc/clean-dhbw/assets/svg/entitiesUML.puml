@@ -1,0 +1,40 @@
+@startuml Entities
+
+class Instruction {
+  - keyword: String
+  - instructionValues: InstructionValue[]
+}
+
+class InstructionValue {
+  - address: Address
+  - word: Word
+}
+
+class StorageSpace {
+  - address: Address
+  - word: Word
+}
+
+class Register {
+  - storageSpaces: StorageSpace[]
+}
+
+class ControlUnit {
+  - decoder: Decoder
+  - processingUnits: ProcessingUnit[]
+  - storageManager: StorageManager
+  - storedValue: Word
+}
+
+Instruction --> "0..*" InstructionValue
+InstructionValue --> Address
+InstructionValue --> Word
+Register --> "0..*" StorageSpace
+StorageSpace --> Address
+StorageSpace --> Word
+ControlUnit --> Decoder
+ControlUnit --> ProcessingUnit
+ControlUnit --> StorageManager
+ControlUnit --> Word : storedValue
+
+@enduml

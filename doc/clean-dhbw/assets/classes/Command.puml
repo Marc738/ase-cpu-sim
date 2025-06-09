@@ -1,0 +1,20 @@
+@startuml
+class Command {
+    - keyword: String
+    - args: List<String>
+    + getKeyword(): String
+    + getArgs(): List<String>
+    + fromString(input: String): Command
+}
+
+class CommandBuilder as "Command.CommandBuilder" {
+    - keyword: String
+    - args: List<String>
+    + setKeyword(keyword: String): CommandBuilder
+    + setArgs(args: List<String>): CommandBuilder
+    + addArgs(arg: String): CommandBuilder
+    + build(): Command
+}
+
+Command *-- CommandBuilder : «uses»
+@enduml

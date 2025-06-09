@@ -1,0 +1,48 @@
+@startuml CPUSimulation Overview
+
+class ALU {
+}
+
+class ArithmeticUnit {
+}
+
+class AddSubUnit {
+}
+
+class SubtractSubUnit {
+}
+
+
+class Decoder {
+}
+
+class AddCommandDecoder {
+}
+
+class SubtractCommandDecoder {
+}
+
+
+class Register {
+}
+
+class StorageManager {
+}
+
+class ControlUnit {
+}
+
+ALU --> ArithmeticUnit
+ArithmeticUnit --> AdditionSubUnit
+AdditionSubUnit --> AddSubUnit
+AdditionSubUnit --> SubtractSubUnit
+
+Decoder --> AddCommandDecoder
+Decoder --> SubtractCommandDecoder
+
+ControlUnit --> ALU
+ControlUnit --> Decoder
+ControlUnit --> Register
+ControlUnit --> StorageManager
+
+@enduml
