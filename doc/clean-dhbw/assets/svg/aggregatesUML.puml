@@ -1,22 +1,52 @@
 @startuml Aggregates
 
-class Instruction {
-  - keyword: String
-  - instructionValues: InstructionValue[]
+class ALU {
+    + static final Address OP1
+    + static final Address OP2
+    + static final Address RES
+
+    - StorageSpace op1
+    - StorageSpace op2
+    - StorageSpace res0
+    - SubUnit[] subUnits
+
+    + ALU()
+    - void initStorageSpaces()
+    - void initSubUnits()
+    + Result<?> canProcess(String keyword)
+    + Result<?> process(Instruction instruction)
+    + Result<Word> read(Address address)
+    + Result<?> write(Address address, Word word)
+    - Result<SubUnit> findSubUnitByKeyword(String keyword)
+    - Result<StorageSpace> findStorageSpace(Address address)
 }
 
-class InstructionValue {
-  - address: Address
-  - word: Word
+class ArithmeticSubUnit {
+    - Operator[] operators
+    + ArithmeticSubUnit()
+    + Result<?> canProcess(String keyword)
+    + Result<OperatorResult> process(String keyword, Word op1, Word op2)
+}
+
+class Decoder {
+  - argDecoder : ArgDecoder
+  - commandDecoders : CommandDecoder[]
+  + Decoder(argDecoder: ArgDecoder, commandDecoders: CommandDecoder[])
+  + decode(command: Command) : Result<Instruction[]>
+}
+
+class StorageManager {
+  - SET : String <<static, final>>
+  - GET : String <<static, final>>
+  - STORE : String <<static, final>>
+
+  + canProcess(instruction: Instruction) : Result<?>
+  + process(units: ProcessingUnit[], storedValue: Word, instruction: Instruction) : Result<?>
+  - findUnitWithMatchingAddress(units: ProcessingUnit[], address: Address) : Result<ProcessingUnit>
 }
 
 class Register {
   - storageSpaces: StorageSpace[]
-}
-
-class StorageSpace {
-  - address: Address
-  - word: Word
 }
 
 class ControlUnit {
@@ -25,18 +55,5 @@ class ControlUnit {
   - storageManager: StorageManager
   - storedValue: Word
 }
-
-Instruction --> InstructionValue
-InstructionValue --> Address
-InstructionValue --> Word
-
-Register --> StorageSpace
-StorageSpace --> Address
-StorageSpace --> Word
-
-ControlUnit --> Decoder
-ControlUnit --> ProcessingUnit
-ControlUnit --> StorageManager
-ControlUnit --> Word : storedValue
 
 @enduml

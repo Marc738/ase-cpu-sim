@@ -84,10 +84,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="UML Component" />
         <option value="UML Class" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -105,67 +105,67 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Class&quot;,
-    &quot;Gradle.ALUTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ALUTest.testProcessAddition.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ALUTest.testProcessSubtraction.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ALUTest.testReadAndWrite.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.AddCommandDecoderTest.decode_shouldReturnInstructions_whenValidArgs.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.AddCommandDecoderTest.executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.AddOperatorTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.AddressResolverTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.AddressTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ArgDecoderTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ArgDecoderTest.testDecodeOnlyAddress.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ArgDecoderTest.testDecodeOnlyWord.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ArithmeticSubUnitTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CommandTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ControlUnitTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ControlUnitTest.testProcessAddCommand.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ControlUnitTest.testProcessInvalidCommand.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ControlUnitTest.testProcessSetCommand.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DecoderTest.decode_shouldReturnError_whenNoDecoderMatches.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DecoderTest.decode_shouldReturnOk_whenMatchingDecoderExists.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DecoderTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DecoderTest.testeDecodeWithAddress.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.GetCommandDecoderTest.testInvalidKeyword.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.GetCommandDecoderTest.testMissingAddress.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.GetCommandDecoderTest.testValidDecode.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.InputConverterTest.testToCommand.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.InstructionValueParserTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.OutputHandlerImplTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RegisterTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RegisterTest.testCanNotProcess.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RegisterTest.testProcessReturnsError.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SetCommandDecoderTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StorageManagerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StorageManagerTest.testeCanProcessSetErfolg.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StorageManagerTest.testeCanProcessStoreErfolg.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StorageManagerTest.testeCanProcessStoreOhneInstructionValue.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StorageManagerTest.testeProcessErfolgreichMitZweiProcessingUnits.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StorageManagerTest.testeProcessStoreErfolgreich.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StorageSpaceTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StorageSpaceTest.testStorageSpacesBuilderAdd.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StorageSpaceTest.testStorageSpacesBuilderAddCount.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StorageSpaceTest.testStorageSpacesBuilderAddFromTo.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StoreCommandDecoderTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SubtractCommandDecoderTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SubtractOperatorTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SubtractOperatorTest.testeSubtraktionMitBorrow.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ValueParserTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ase-cpu-sim [:Main.main()].executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.ase-cpu-sim [test].executor&quot;: &quot;Coverage&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/marcschillinger/Documents/dev-remote/dhbw/ASE/ase-cpu-sim/src/main/java/de/dhbw&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultPlantUmlFileTemplate": "UML Class",
+    "Gradle.ALUTest.executor": "Run",
+    "Gradle.ALUTest.testProcessAddition.executor": "Run",
+    "Gradle.ALUTest.testProcessSubtraction.executor": "Run",
+    "Gradle.ALUTest.testReadAndWrite.executor": "Run",
+    "Gradle.AddCommandDecoderTest.decode_shouldReturnInstructions_whenValidArgs.executor": "Run",
+    "Gradle.AddCommandDecoderTest.executor": "Debug",
+    "Gradle.AddOperatorTest.executor": "Run",
+    "Gradle.AddressResolverTest.executor": "Run",
+    "Gradle.AddressTest.executor": "Run",
+    "Gradle.ArgDecoderTest.executor": "Run",
+    "Gradle.ArgDecoderTest.testDecodeOnlyAddress.executor": "Run",
+    "Gradle.ArgDecoderTest.testDecodeOnlyWord.executor": "Run",
+    "Gradle.ArithmeticSubUnitTest.executor": "Run",
+    "Gradle.CommandTest.executor": "Run",
+    "Gradle.ControlUnitTest.executor": "Run",
+    "Gradle.ControlUnitTest.testProcessAddCommand.executor": "Run",
+    "Gradle.ControlUnitTest.testProcessInvalidCommand.executor": "Run",
+    "Gradle.ControlUnitTest.testProcessSetCommand.executor": "Run",
+    "Gradle.DecoderTest.decode_shouldReturnError_whenNoDecoderMatches.executor": "Run",
+    "Gradle.DecoderTest.decode_shouldReturnOk_whenMatchingDecoderExists.executor": "Run",
+    "Gradle.DecoderTest.executor": "Run",
+    "Gradle.DecoderTest.testeDecodeWithAddress.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.GetCommandDecoderTest.testInvalidKeyword.executor": "Run",
+    "Gradle.GetCommandDecoderTest.testMissingAddress.executor": "Run",
+    "Gradle.GetCommandDecoderTest.testValidDecode.executor": "Run",
+    "Gradle.InputConverterTest.testToCommand.executor": "Run",
+    "Gradle.InstructionValueParserTest.executor": "Run",
+    "Gradle.OutputHandlerImplTest.executor": "Run",
+    "Gradle.RegisterTest.executor": "Run",
+    "Gradle.RegisterTest.testCanNotProcess.executor": "Run",
+    "Gradle.RegisterTest.testProcessReturnsError.executor": "Run",
+    "Gradle.SetCommandDecoderTest.executor": "Run",
+    "Gradle.StorageManagerTest.executor": "Run",
+    "Gradle.StorageManagerTest.testeCanProcessSetErfolg.executor": "Run",
+    "Gradle.StorageManagerTest.testeCanProcessStoreErfolg.executor": "Run",
+    "Gradle.StorageManagerTest.testeCanProcessStoreOhneInstructionValue.executor": "Run",
+    "Gradle.StorageManagerTest.testeProcessErfolgreichMitZweiProcessingUnits.executor": "Run",
+    "Gradle.StorageManagerTest.testeProcessStoreErfolgreich.executor": "Run",
+    "Gradle.StorageSpaceTest.executor": "Run",
+    "Gradle.StorageSpaceTest.testStorageSpacesBuilderAdd.executor": "Run",
+    "Gradle.StorageSpaceTest.testStorageSpacesBuilderAddCount.executor": "Run",
+    "Gradle.StorageSpaceTest.testStorageSpacesBuilderAddFromTo.executor": "Run",
+    "Gradle.StoreCommandDecoderTest.executor": "Run",
+    "Gradle.SubtractCommandDecoderTest.executor": "Run",
+    "Gradle.SubtractOperatorTest.executor": "Run",
+    "Gradle.SubtractOperatorTest.testeSubtraktionMitBorrow.executor": "Run",
+    "Gradle.ValueParserTest.executor": "Run",
+    "Gradle.ase-cpu-sim [:Main.main()].executor": "Debug",
+    "Gradle.ase-cpu-sim [test].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "dev",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/marcschillinger/Documents/dev-remote/dhbw/ASE/ase-cpu-sim/src/main/java/de/dhbw",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/de/dhbw" />
@@ -175,8 +175,8 @@
       <recent name="$PROJECT_DIR$/src/main/java/de/dhbw" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ase-cpu-sim [test]">
-    <configuration name="ControlUnitTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.StorageManagerTest">
+    <configuration name="AddOperatorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -189,31 +189,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;units.control.ControlUnitTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="ControlUnitTest.testProcessInvalidCommand" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;units.control.ControlUnitTest.testProcessInvalidCommand&quot;" />
+            <option value="&quot;units.alu.subunit.arithmetic.AddOperatorTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -272,6 +248,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="StorageManagerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;units.control.StorageManagerTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="ase-cpu-sim [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -296,11 +296,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.StorageManagerTest" />
         <item itemvalue="Gradle.ase-cpu-sim [test]" />
+        <item itemvalue="Gradle.AddOperatorTest" />
         <item itemvalue="Gradle.RegisterTest.testProcessReturnsError" />
         <item itemvalue="Gradle.RegisterTest.testCanNotProcess" />
-        <item itemvalue="Gradle.ControlUnitTest" />
-        <item itemvalue="Gradle.ControlUnitTest.testProcessInvalidCommand" />
       </list>
     </recent_temporary>
   </component>

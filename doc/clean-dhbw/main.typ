@@ -91,17 +91,16 @@ Clean Architecture strebt an möglichst langlebigen Code zu strukturieren und zu
 #todo(position: right)[Kann man noch erweitern]
 
 == Analyse der Dependency Rule
+// abhängigkeiten dürfen nur von innen nach außen auftreten
 
 === Positiv-Beispiel
 // [UML und Analyse]
-#todo[Beispiel heraussuchen]
+#todo(position: "inline")[ControlUnit kennt CPUSimulator nicht]
 
 === Negativ-Beispiel
 // [UML und Analyse]
 
-#todo(
-  position: "inline",
-)[ControlUnit und StorageManager: ControlUnit ist zuständig für ProcessingUnits und StoredValue, aber StorageManager benötigt ProcessingUnits und StoredValue um Datenoperationen auszuführen.]
+#todo(position: left)[Beispiel aussuchen]
 
 == Analyse der Schichten
 
@@ -276,7 +275,7 @@ Die AddCommandDecoder-Klasse ist ein einfaches Beispiel für hohe Kohäsion (sie
 == Don't Repeat Yourself (DRY)
 // [Commit angeben, vorher/nachher Code zeigen und Auswirkung begründen]
 
-#todo(position: right)[Commit raussuchen]
+#todo(position: "inline")[Commit mit StorageManager und dem wiederholten Abgleichen ob Set, Get, Store]
 
 = Kapitel 5: Unit Tests
 
@@ -314,34 +313,133 @@ Die AddCommandDecoder-Klasse ist ein einfaches Beispiel für hohe Kohäsion (sie
   [Testet ob man einen Command über den CommandBuilder erstellen kann.],
 )
 
-| Klasse=Methode | [Beschreibung] |
-| ... | ... |
+// | Klasse=Methode | [Beschreibung] |
+// | ... | ... |
 
-#todo[Verstehen und Tabelle bauen]
+// #todo[Verstehen und Tabelle bauen]
 
 == ATRIP: Automatic
+
+/*
+Angewendet auf Unit-Tests, kann man die ATRIP-Regeln so interpretieren:
+	•	A – Automatic
+Tests sollen automatisiert ausführbar sein (z. B. via CI/CD), ohne manuelles Eingreifen.
+	•	T – Thorough
+Tests sollen umfassend sein: alle wichtigen Codepfade und Randfälle abdecken.
+	•	R – Realistic
+Die Tests sollen realitätsnahe Szenarien abbilden, nicht nur synthetische Beispiele.
+	•	I – Intelligent
+Die Tests sollen sinnvoll geschrieben sein, z. B. mit guten Assertions und klaren Eingabedaten. Kein Overengineering.
+	•	P – Professional
+Gut lesbar, sauber strukturiert, mit sprechenden Namen und ggf. Kommentaren – wie produktionsreifer Code.
+
+So angewendet helfen ATRIP-Regeln, Unit-Tests zuverlässig, wartbar und nützlich zu machen.
+*/
+
 // [Begründung]
-#todo[Begründung aussuchen]
+
+Die Tests lassen sich automatisiert ausführen durch den Befehl im Hauptverzeichnis.
+
+#figure(
+  sourcecode(`./gradlew test`),
+  caption: "Command zum ausführen der Tests",
+)
 
 == ATRIP: Thorough
 
 === Positiv-Beispiel
 // [Code, Analyse]
-#todo[Beispiel aussuchen]
+
+#figure(
+  sourcecode(```dart
+    @Test
+    void decode_shouldReturnError_whenInvalidArgs() {
+        AddCommandDecoder decoder = new AddCommandDecoder();
+
+        InstructionValue[] values = new InstructionValue[] {
+                new InstructionValue(null, null),
+                new InstructionValue(null, null)
+        };
+
+        Result<Instruction[]> result = decoder.decode("add", values);
+
+        assertTrue(result instanceof Result.Error);
+        assertEquals("Invalid decoding of arg!", ((Result.Error<Instruction[]>) result).getException().getMessage());
+    }
+  ```),
+) <adddecodertestcase>
+
+Um ein Beispiel für umfassendes Testen zu zeigen wurde die `AddCommandDecoderTest`-Klasse ausgewählt (siehe #link("https://github.com/Marc738/ase-cpu-sim/blob/dev/src/test/java/units/control/decoder/command/AddCommandDecoderTest.java", "GitHub")). In diesem Testbeispiel wird spezifisch getestet, wie die Funktion `decode` mit der Übergabe fehlender Argumente umgeht. Wie in Zeile 13 (siehe @adddecodertestcase) erkannt werden kann sieht man, dass die Fehlermeldung passend zur aufgetretenen Fehler ist. Innerhalb der Testklasse werden ebenso 3 weitere Testfälle behandelt, welche ein umfassendes Spektrum aus Funktionalitätsprüfung und Fehlerbehandlung beinhaltet.
 
 === Negativ-Beispiel
 // [Code, Analyse]
-#todo[Beispiel aussuchen]
+
+#figure(
+  sourcecode(```dart
+  @Override
+    public Result<Word> read(Address address) {
+        Result<StorageSpace> findStorageSpaceResult = findStorageSpace(address);
+        if(findStorageSpaceResult instanceof Result.Ok<StorageSpace> findStorageSpaceOk) {
+            Word word = findStorageSpaceOk.getValue().getWord();
+            return Result.ok(word);
+        } else if(findStorageSpaceResult instanceof Result.Error<StorageSpace> findStorageSpaceError){
+            return Result.error(findStorageSpaceError.getException());
+        } else {
+            return Result.error(new UnexpectedResultException(this.getClass().getSimpleName()));
+        }
+    }
+  ```),
+) <alutestcase>
+
+Ein schlechtes Beispiel für Thorough ist die Klasse `ALU`. Der oben gezeigte Code in @alutestcase ist nicht gut testbar, bzw wird nicht von der `ALUTest`-Klasse ausrechend getestet. Dies liegt am `else`-Branch. Dieser wird nur tätig sobald ein Objekt von der `findStorageSpace`-Methode zurückgeliefert wird, welche nicht den vorher definierten Cases entspricht. Da die Methode innerhalb der Klasse liegt ist es schwierig deren Funktion für einen Testfall zu ändern.
+
+Somit ist dies ein schlechter Fall der umfangreichen Testung.
 
 == ATRIP: Professional
 
 === Positiv-Beispiel
 // [Code, Analyse]
-#todo[Beispiel aussuchen]
+
+#figure(
+  sourcecode(```dart
+  @Test
+    void decode_shouldReturnOk_whenMatchingDecoderExists() {
+        ...
+    }
+
+    @Test
+    void decode_shouldReturnError_whenNoDecoderMatches() {
+        ...
+    }
+  ```),
+  caption: "DecoderTest Test Cases",
+) <decodertestcases>
+
+Als Positivbeispiel für Professional wurde die `DecoderTest`-Klasse ausgewählt (siehe #link("GitHhttps://github.com/Marc738/ase-cpu-sim/blob/dev/src/test/java/units/control/decoder/DecoderTest.javaub", "GitHub")). Sie verwendet einfach verständliche Methodennamen. Somit kann auf einen Blick verstanden werden was der Test macht.
 
 === Negativ-Beispiel
 // [Code, Analyse]
-#todo[Beispiel aussuchen]
+
+#figure(
+  sourcecode(```dart
+  @Test
+    void testeCanProcessAdd() {
+        ArithmeticSubUnit subUnit = new ArithmeticSubUnit();
+        Result<?> result = subUnit.canProcess("add");
+        assertTrue(result instanceof Result.Ok<?>);
+    }
+
+    @Test
+    void testeCanProcessSubtract() {
+        ArithmeticSubUnit subUnit = new ArithmeticSubUnit();
+        Result<?> result = subUnit.canProcess("sub");
+        assertTrue(result instanceof Result.Ok<?>);
+    }
+  ```),
+  caption: "ArithmeticSubUnitTest Test Cases",
+)
+
+Die Testklasse `ArithmeticSubUnitTest` enthält keine Kommentare und die Methodennamen sind leicht irreführend. In beiden Testfällen wird suggeriert, das getestet wird ob die `ArithmeticSubUnit`-Klasse die Addition und Subtraktion selbst ausführen könne. Dies stimmt aber nicht. Die Klasse nutzt sogenannte `Operator`-Klassen, welche sich um die Umsetzung kümmern. Somit wird das Prinzip von Professional verletzt.
 
 == Code Coverage
 // [Analyse]
@@ -433,45 +531,56 @@ In der Testklasse `ControlUnitTest` für die Klasse `ControlUnit`, werden Mocks 
 #table(
   columns: 3,
   table.header([*Bezeichnung*], [*Bedeutung*], [*Begründung*]),
-  [Keyword], [Ist das erste Teil einer Nutzereingabe. Endet ab erstem Leerzeichen.], [],
-  [Command], [Strukturierte Nutzereingabe. Unterteilt in Keyword und Argumente], [],
+  [Keyword],
+  [Ist das erste Teil einer Nutzereingabe. Endet ab erstem Leerzeichen.],
+  [Identifiziert die Anweisung an das System.],
+
+  [Command],
+  [Strukturierte Nutzereingabe. Unterteilt in Keyword und Argumente.],
+  [Ist grundlegende Repräsentation der Nutzereingabe.],
+
   [Instruction],
   [Ein oder mehrere Instructions entstehen aus einem Command. Diese werden genutzt als elementare Operationen auf der CPU],
-  [],
+  [Ebenfalls Teil der Repräsentation der Nutzereingabe.],
 
-  [InstructionValue], [Gehört zu einer Instruction. Enthält eine Address oder einen Word eines Commands], [],
+  [InstructionValue],
+  [Gehört zu einer Instruction. Enthält eine Address oder einen Word eines Commands],
+  [Zugehörig zur Trennung der Verantwortlichkeiten innerhalb einer Instruction],
+
   [Word],
   [Ist die Klasse die den niedrigsten Wert in der CPU symbolisiert. Enthält eine Liste an Wahr- und Falschwerten (Boolean), diese repräsentieren Bits. Ein Word ist ein Byte in dieser Konfiguration],
-  [],
+  [Minimale Darstellung des Speichers.],
 
   [Address],
   [Jeder Speicherplatz in der CPU hat eine addressierbare Address. Sie ist definiert über ein Prefix (bspw. "r" für Register) und einen Index (bspw. "5" für die 6. Stelle innerhalb des Registers)],
-  [],
+  [Benötigt zur Adressierung von Speicherplatz.],
 
   [StoredValue],
   [Ist ein besonderer Speicherplatz innerhalb der ControlUnit, welcher dafür genutzt wird um einen Wert zwischenzuspeichern für weitere Instructions.],
-  [],
+  [Wichtig als Zwischenspeicher für komplexere Abläufe innerhalb oder zwischen mehreren Units.],
 
   [Unit],
   [Ist eine Klasse welche der ControlUnit unterstellt ist. Diese kann schreiben, lesen und Instructions auführen, sowie zurückgeben ob sie eine Instruction überhaupt ausführen kann.],
-  [],
+  [Einheiten welche je einen Aufgabenbereich übernehmen innerhalb der CPU.],
 
   [SubUnit],
   [SubUnits sind spezifisch für die ALU. Die ALU nutzt diese um die unterschiedlichen Teilgebiete der Rechenoperationen zu gliedern. Bspw. ArithmeticSubUnit für die Verarbeitung von Additionen und Subtraktionen oder LogicalSubUnit für Gleichheitsoperationen (bspw. "AND") und ähnliche.],
-  [],
+  [Wird genutzt zur Aufteilung der einzelnen Aufgabenbestandteile einer Unit.],
 
   [Operator],
   [Operator ist ebenfalls spezifisch für die ALU. Sie repräsentieren die einzelnen Operationen die die ALU ausführen kann, wie Addition und Subtraktion. Sie können zurückgeben ob sie eine Instruction verarbeiten können und sie im positiven Fall dann verarbeiten in einer weiteren Funktion.],
-  [],
+  [Kleinste Aufgabe einer Unit wird durch einen Operator übernommen.],
 
-  [Decoder], [Ist zuständig dafür Commands in Instructions umzuwandeln], [],
-  [ALU], [Ist eine Unit und ist zuständig für die arithmetischen Operationen der CPU], [],
-  [Register], [Ist eine Unit welche nur Daten lesen und schreiben kann], [],
+  [Decoder],
+  [Ist zuständig dafür Commands in Instructions umzuwandeln],
+  [Decodierung der Eingaben des Nutzers in Instructions, welche die CPU verstehen und verarbeiten kann. Ebenfalls wichtig zur Validierung der Nutzereingabe.],
+
+  [ALU], [Ist eine Unit und ist zuständig für die arithmetischen Operationen der CPU], [Recheneinheit der CPU.],
+  [Register], [Ist eine Unit welche nur Daten lesen und schreiben kann], [Primäre Speichereinheit der CPU.],
   [StorageManager],
-  [Ist eine Klasse welche von der ControlUnit verwaltet wird. Sie ist zuständig für Instructions welche Daten verschieben (wie bpsw. "set", "get", "store"). Sie erhält Zugriff auf die ProcessingUnits und die StoredValue um Dateninstructions ausführen zu können.],
-  [],
+  [Ist eine Klasse welche von der ControlUnit verwaltet wird. Sie ist zuständig für Instructions welche Daten verschieben (wie bpsw. "set", "get", "store"). Sie erhält Zugriff auf die ProcessingUnits und die StoredValue, um Dateninstructions ausführen zu können.],
+  [Nicht in einer herkömmlichen CPU enthalten, aber wichtig für die Trennung der Zuständigkeit innerhalb der ControlUnit.],
 )
-#todo[Begründung hinzufügen]
 
 == Entities
 // [UML, Beschreibung, Begründung]
@@ -479,7 +588,7 @@ In der Testklasse `ControlUnitTest` für die Klasse `ControlUnit`, werden Mocks 
 // StorageSpace (durch Address)
 
 #figure(
-  image("assets/classes/StorageSpace.svg"),
+  image("assets/svg/Entities.svg"),
   caption: "Entities UML",
 ) <entitiesuml>
 
@@ -496,6 +605,18 @@ Die in @entitiesuml gezeigte Klasse `StorageSpace` ist die einzige Klasse sie si
 )
 #todo[Beschreibung hinzufügen]
 
+Hierbei handelt es sich um Klassen, welche keine eigene Identität haben und nur durch ihre Werte ausgezeichnet werden.
+
+Hierzu gehören folgende Klassen:
+- `Address`
+- `Command` //
+- `Word`
+- `GetInstruction` //
+- `SetInstruction` //
+- `StoreInstruction` //
+- `Instruction` //
+- `InsctructionValue`
+
 == Repositories
 // [UML, Beschreibung, Begründung]
 
@@ -504,13 +625,22 @@ Es wurde keine passende Klasse in der Rolle eines Repositories ermittelt.
 == Aggregates
 // [UML, Beschreibung, Begründung]
 
-// ControlUnit, Decoder, StorageManager, ArithmeticSubUnit, CPUSimulator
+// ControlUnit, Decoder, StorageManager, ArithmeticSubUnit, CPUSimulator, Register, Instruction
 
 #figure(
   image("assets/svg/Aggregates.svg"),
   caption: "Value Objects UML",
 )
 #todo[Beschreibung hinzufügen]
+
+Aggregate bringen ähnliche, bzw. zusammengehörige Entities und Value Objects zusammen.
+Beispiele hierfür in diesem Projekt sind:
+- `ControlUnit`
+- `Decoder`
+- `StorageManager`
+- `ArithmeticSubUnit`
+- `CPUSimulator`
+- `Register`
 
 // Domain Service
 // AddDecoder, SubtractDecoder, SetDecoder, GetDecoder, StoreDecoder, ArgDecoder, AddOperator, SubtractOperator, Operator
@@ -522,7 +652,7 @@ Es wurde keine passende Klasse in der Rolle eines Repositories ermittelt.
 === Code Smell 1
 // [Beispiel, Lösungsvorschlag]
 
-Der StorageManager enthält einen Code Smell. Dieser hat eine verhältnismässig große Methode `process`. Diese Verarbeitet alle drei Fälle `set`, `get` und `store`. Das bringt folgendes Problem mit sich. Es wird nicht das Single-Responsibility-Principle, sowie das Open-Closed-Principle erfüllt.
+Der `StorageManager` enthält einen Code Smell (siehe #link("https://github.com/Marc738/ase-cpu-sim/blob/dev/src/main/java/de/dhbw/units/control/StorageManager.java", "GitHub")). Dieser hat eine verhältnismässig große Methode `process`. Diese Verarbeitet alle drei Fälle `set`, `get` und `store`. Das bringt folgendes Problem mit sich. Es wird nicht das Single-Responsibility-Principle, sowie das Open-Closed-Principle erfüllt.
 
 Verbessert werden kann das durch das Verteilen der Zuständigkeit auf einzelne Klassen. Somit würde der StorageManager eine Liste an Klassen halten, welche sich je um einen Fall kümmern. Diese Liste könnte einfach erweitert oder verkleinert werden.
 

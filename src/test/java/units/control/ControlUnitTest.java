@@ -3,7 +3,7 @@ package units.control;
 import de.dhbw.units.ProcessingUnit;
 import de.dhbw.utils.data.Command;
 import de.dhbw.units.control.ControlUnit;
-import de.dhbw.units.control.StorageManager;
+import de.dhbw.units.control.storagemanager.StorageManager;
 import de.dhbw.units.control.decoder.Decoder;
 import de.dhbw.utils.address.Address;
 import de.dhbw.utils.data.Word;

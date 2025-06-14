@@ -48,7 +48,6 @@ class AddCommandDecoderTest {
     void decode_shouldReturnError_whenInvalidArgs() {
         AddCommandDecoder decoder = new AddCommandDecoder();
 
-        // Beide Werte null (nicht erlaubt)
         InstructionValue[] values = new InstructionValue[] {
                 new InstructionValue(null, null),
                 new InstructionValue(null, null)
