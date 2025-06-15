@@ -1,0 +1,42 @@
+@startuml
+
+interface StorageOperation {
+    +canProcess(instruction: Instruction): boolean
+    +process(units: ProcessingUnit[], storedValue: Word, instruction: Instruction): Result<?>
+}
+
+class StorageManager {
+    -storageOperations: StorageOperation[]
+    +StorageManager()
+    +canProcess(instruction: Instruction): Result<?>
+    +process(units: ProcessingUnit[], storedValue: Word, instruction: Instruction): Result<?>
+}
+
+class SetStorageOperation {
+    -key: String
+    +canProcess(instruction: Instruction): boolean
+    +process(units: ProcessingUnit[], storedValue: Word, instruction: Instruction): Result<?>
+}
+
+class GetStorageOperation {
+    -key: String
+    +canProcess(instruction: Instruction): boolean
+    +process(units: ProcessingUnit[], storedValue: Word, instruction: Instruction): Result<?>
+}
+
+class StoreStorageOperation {
+    -key: String
+    +canProcess(instruction: Instruction): boolean
+    +process(units: ProcessingUnit[], storedValue: Word, instruction: Instruction): Result<?>
+}
+
+StorageManager --> StorageOperation : uses
+StorageManager --> SetStorageOperation
+StorageManager --> GetStorageOperation
+StorageManager --> StoreStorageOperation
+
+SetStorageOperation ..|> StorageOperation
+GetStorageOperation ..|> StorageOperation
+StoreStorageOperation ..|> StorageOperation
+
+@enduml

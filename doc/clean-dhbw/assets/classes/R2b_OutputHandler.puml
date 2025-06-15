@@ -1,0 +1,15 @@
+@startuml
+
+interface OutputHandler {
+    +print(text: String): void
+}
+
+class OutputHandlerImpl {
+    -printStream: PrintStream
+    +OutputHandlerImpl()
+    +print(text: String): void
+}
+
+OutputHandlerImpl ..|> OutputHandler
+
+@enduml

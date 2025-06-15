@@ -1,0 +1,26 @@
+@startuml
+
+interface OutputHandler {
+    +print(text: String): void
+}
+
+class OutputHandlerImpl {
+    -printStream: PrintStream
+    +OutputHandlerImpl()
+    +print(text: String): void
+}
+
+OutputHandlerImpl ..|> OutputHandler
+
+interface ResultHandler {
+    +process(result: Result<?>): String
+}
+
+class ResultHandlerImpl {
+    +process(result: Result<?>): String
+    -print(text: String, colorCode: String): String
+}
+
+ResultHandlerImpl ..|> ResultHandler
+
+@enduml

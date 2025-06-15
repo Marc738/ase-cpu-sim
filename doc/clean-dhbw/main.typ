@@ -30,8 +30,6 @@
   // for more options check the package documentation (https://typst.app/universe/package/clean-dhbw)
 )
 
-#outline(title: "TODOs", target: figure.where(kind: "todo"))
-
 = Kapitel 1: Einführung
 
 == Übersicht über die Applikation
@@ -88,19 +86,29 @@ Zentral ist die ControlUnit für alle Abläufe innerhalb der simulierten CPU zus
 == Was ist Clean Architecture?
 Clean Architecture strebt an möglichst langlebigen Code zu strukturieren und zu schreiben. Langlebiger Code wird durch Flexibilität, Skalierbarkeit und guter Wartung definiert. Hierfür wird ein mehrschichtiges System angestrebt, welches klare Schnittstellen und Abhängigkeiten vorsieht. Gedacht wird dieses System wie eine Zwiebel. Im Kern befindet sich die Anwendungslogik und in der äußeren Schichten die Peripheriegeräte. Abhängigkeiten gelten immer nur von einer äußeren zu einer weiter innen liegenden Schicht.
 
-#todo(position: right)[Kann man noch erweitern]
-
 == Analyse der Dependency Rule
 // abhängigkeiten dürfen nur von innen nach außen auftreten
 
 === Positiv-Beispiel
 // [UML und Analyse]
-#todo(position: "inline")[ControlUnit kennt CPUSimulator nicht]
+
+#figure(
+  image("assets/svg/DependencyRule_CPUSimulator.svg"),
+  caption: "DependencyRule Positivbeispiel UML",
+) <drcpusimulator>
+
+Der `CPUSimulator`-Klasse liegt innerhalb des Schichtenmodells weiter außen als die `ControlUnit`-Klasse. Somit darf nach der Dependency Rule die `ControlUnit`-Klasse nichts von der `CPUSimulator`-Klasse wissen. Anhand von @drcpusimulator kann man sehen das diesem Prinzip gefolgt wird.
 
 === Negativ-Beispiel
 // [UML und Analyse]
 
-#todo(position: left)[Beispiel aussuchen]
+Es wurde kein Negativ-Beispiel innerhalb des Codes gefunden. Somit wird an dieser Stelle ein weiters Positiv-Beispiel eingefügt.
+
+#figure(
+  image("assets/classes/R1a_StorageManager.svg"),
+  caption: "StorageManager Positivbeispiel UML",
+) <drstoragemanager>
+Der `StorageManager` ist ebenfalls ein positives Beispiel für die Dependency Rule. Wie in @drstoragemanager zu sehen kennen die `StorageOperation`-Klassen die `StorageManager`-Klasse nicht. Da in der Schichtendarstellung, die `StorageOperation`-Klassen tiefer liegen, ist die Dependency Rule erfüllt.
 
 == Analyse der Schichten
 
@@ -275,7 +283,42 @@ Die AddCommandDecoder-Klasse ist ein einfaches Beispiel für hohe Kohäsion (sie
 == Don't Repeat Yourself (DRY)
 // [Commit angeben, vorher/nachher Code zeigen und Auswirkung begründen]
 
-#todo(position: "inline")[Commit mit StorageManager und dem wiederholten Abgleichen ob Set, Get, Store]
+#figure(
+  sourcecode(```java
+      public Result<?> canProcess(Instruction instruction) {
+        ...
+        if(instruction.getKeyword().contentEquals(SET)) {
+          InstructionValue[] instructionValues = instruction.getValues();
+          ...
+        } else if(instruction.getKeyword().contentEquals(GET)) {
+          ...
+        } else if(instruction.getKeyword().contentEquals(STORE)) {
+          ...
+        } else {
+          ...
+        }
+      }
+  ```),
+  caption: "StorageManager zuvor",
+) <drystoragemanagerb>
+
+
+#figure(
+  sourcecode(```java
+  public Result<?> canProcess(Instruction instruction) {
+    for(StorageOperation storageOperation : storageOperations) {
+        if(storageOperation.canProcess(instruction)) {
+            return Result.ok();
+        }
+    }
+  }
+  ```),
+  caption: "StorageManager danach",
+) <drystoragemanagera>
+
+#link("https://github.com/Marc738/ase-cpu-sim/commit/38ade493ef1811637f06bd046e511a2d5d0c6fb4", "Link zum Commit")
+
+@drystoragemanagerb zeigt wie die `StorageManager`-Klasse vor der Änderung aussah. Es wurde für jeden Case den es gab eine If-Klausel eingeführt. Das führte zu einer Codewiederholung. Durch die Anpassung die einzelnen Fälle in jeweils einzelne Klassen auszulagern, konnte die Komplexität der Klasse verringert werden und DRY eingehalten werden (siehe @drystoragemanagera).
 
 = Kapitel 5: Unit Tests
 
@@ -284,32 +327,35 @@ Die AddCommandDecoder-Klasse ist ein einfaches Beispiel für hohe Kohäsion (sie
 #table(
   columns: 2,
   table.header([*Unit Test*], [*Beschreibung*]),
-  [`StorageSpaceTest > testConstructorWithWord()`],
+  [`StorageSpaceTest = testConstructorWithWord()`],
   [Testet ob die StorageSpace-Klasse die im Constructor übergebenen Werte übernimmt.],
 
-  [`AddOperatorTest > testeEinfacheAddition()`],
+  [`AddOperatorTest = testeEinfacheAddition()`],
   [Testet ob AddOperator eine einfache Addition (ohne Übertrag) zweier Words ausführen kann.],
 
-  [`AddOperatorTest > testeAdditionMitÜberlauf()`],
+  [`AddOperatorTest = testeAdditionMitÜberlauf()`],
   [Testet ob AddOperator eine Addition mit Übertrag zweier Words ausführen kann.],
 
-  [`ALUTest > testCanProcess()`],
+  [`ALUTest = testCanProcess()`],
   [Testet ob die ALU ein valides Keyword verarbeiten kann und ein invalides Keyword nicht verarbeiten kann.],
 
-  [`ALUTest > testProcessAddition()`],
+  [`ALUTest = testProcessAddition()`],
   [Testet ob eine Addition-Instruction erfolgreich verarbeitet werden kann. Die ALU reicht diese Anfrage an den AddOperator weiter. Diese Weiterleitung wird getestet.],
 
-  [`AddCommandDecoderTest > decode_shouldReturnInstructions-_whenValidArgs()`],
+  [`AddCommandDecoderTest = decode_shouldReturnInstructions
+  _whenValidArgs()`],
   [Testet ob der AddCommand in die richtige Kombination aus Instructions übersetzt wird.],
 
-  [`GetCommandDecoderTest > testMissingAddress()`],
+  [`GetCommandDecoderTest = testMissingAddress()`],
   [Testet ob ein Fehler auftritt beim decoden, wenn die Adresse nicht spezifiziert wurde.],
 
-  [`ArgsDecoderTest > testDecodeWordAndAddress()`],
+  [`ArgsDecoderTest = testDecodeWordAndAddress()`],
   [Testet ob die übergebenen Argumente (Word und Address) richtig erkannt und übertragen werden in ihre Klassenrepräsentation.],
 
-  [`CommandTest > testeNurMitKeyword()`], [Testet ob ein Command nur von einem Keyword erstellen kann.],
-  [`CommandTest > testeCommandErstellungMitCommandBuilder()`],
+  [`CommandTest = testeNurMitKeyword()`], [Testet ob ein Command nur von einem Keyword erstellen kann.],
+  [`CommandTest =
+  testeCommandErstellungMit
+  CommandBuilder()`],
   [Testet ob man einen Command über den CommandBuilder erstellen kann.],
 )
 
@@ -603,7 +649,6 @@ Die in @entitiesuml gezeigte Klasse `StorageSpace` ist die einzige Klasse sie si
   image("assets/svg/ValueObjects.svg"),
   caption: "Value Objects UML",
 )
-#todo[Beschreibung hinzufügen]
 
 Hierbei handelt es sich um Klassen, welche keine eigene Identität haben und nur durch ihre Werte ausgezeichnet werden.
 
@@ -631,7 +676,6 @@ Es wurde keine passende Klasse in der Rolle eines Repositories ermittelt.
   image("assets/svg/Aggregates.svg"),
   caption: "Value Objects UML",
 )
-#todo[Beschreibung hinzufügen]
 
 Aggregate bringen ähnliche, bzw. zusammengehörige Entities und Value Objects zusammen.
 Beispiele hierfür in diesem Projekt sind:
@@ -658,22 +702,50 @@ Verbessert werden kann das durch das Verteilen der Zuständigkeit auf einzelne K
 
 === Code Smell 2
 // [Beispiel, Lösungsvorschlag]
-#todo[Single-Responsibility-Principle bei OutputHandler]
+
+Ein weiteres Problem zeigt sich in der ursprünglichen `OutputHandler`-Klasse. Diese war dafür zuständig, Textausgaben an den Nutzer zu übermitteln, übernahm jedoch zugleich auch die Aufgabe, Ergebnisse (`Result`-Klasse) semantisch zu interpretieren und entsprechend darzustellen. Damit wurde das Single-Responsibility-Principle verletzt, da die Klasse zwei verschiedene Verantwortlichkeiten vereinte: die technische Ausgabe sowie die inhaltliche Aufbereitung von Ergebnissen.
+
+Die Vermischung dieser Verantwortlichkeiten führte nicht nur zu reduzierter Lesbarkeit, sondern erschwerte auch die Testbarkeit und Wiederverwendbarkeit der Komponente. Eine saubere Trennung dieser Aufgaben wird notwendig, um die Wartbarkeit und Erweiterbarkeit des Systems zu gewährleisten. Um dieses Problem zu lösen kann eine weitere Klasse entworfen werden um separat dieses Problem der Verarbeitung der `Result`-Klasse zu behandeln.
 
 == 2 Refactorings
 
 === Refactoring 1
 // [Vorher/Nachher UML, Begründung]
 
-#link("https://github.com/Marc738/ase-cpu-sim/commit/38ade493ef1811637f06bd046e511a2d5d0c6fb4", "Link zum Commit")
+#figure(
+  image("assets/classes/R1b_StorageManager.svg"),
+  caption: "StorageManager vor Refactoring 1",
+) <r1b>
 
-#todo[Beschreibung schreiben + UML von Struktur]
+@r1b zeigt wie die `StorageManager`-Klasse vor dem Refactoring 1 operiert hat. Die vollständige Verantwortlichkeit über alle drei Funktionen `set`, `get` und `store` lagen innerhalb der Klasse. Durch das Refactoring 1 wurde dieses Designkonzept geändert, aber die selbe Funktionalität beibehalten.
+
+#figure(
+  image("assets/classes/R1a_StorageManager.svg"),
+  caption: "StorageManager nach Refactoring 1",
+) <r1a>
+
+@r1a zeigt welche Auswirkungen das Refactoring 1 hatte auf die Struktur von der `StorageManager`-Klasse.
+
+#link("https://github.com/Marc738/ase-cpu-sim/commit/38ade493ef1811637f06bd046e511a2d5d0c6fb4", "Link zum Commit")
 
 === Refactoring 2
 // [Vorher/Nachher UML, Begründung]
-#todo(
-  position: "inline",
-)[OutputHandler soll nicht mehr Result empfangen, dass soll eine andere Klasse vorher machen um nur noch den String weitergeben]
+
+#figure(
+  image("assets/classes/R2b_OutputHandler.svg"),
+  caption: "OutputHandler vor Refactoring 2",
+) <r2b>
+
+@r2b zeigt den Stand vor dem Refactoring 2. Der Grund für das Refactoring liegt darin, das der `OutputHandler` zuvor zwei Aufgaben übernommen hat. Hierbei handelte es sich um das Verarbeiten der `Result`-Klasse und die Ausgabe selbst. Diese Aufgaben sollten isoliert voneinander verarbeitet werden. Hierfür wurde dann das Refactoring 2 durchgeführt.
+
+#figure(
+  image("assets/classes/R2a_OutputHandler.svg"),
+  caption: "OutputHandler nach Refactoring 2",
+) <r2a>
+
+@r2a zeigt das eine weitere Klasse `ResultHandler` entworfen wurde, um die Aufgabe des Verarbeitens der `Result`-Klasse zu übernehmen. Somit wurde die Logik getrennt.
+
+#link("https://github.com/<user>/<repo>/commit/831b4cfb9b712237258cc856e18ee6a13eec531f", "Link zum Commit")
 
 = Kapitel 8: Entwurfsmuster
 

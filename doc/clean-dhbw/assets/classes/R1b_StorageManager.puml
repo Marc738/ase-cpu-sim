@@ -1,0 +1,13 @@
+@startuml
+
+class StorageManager {
+  - SET : String <<static, final>>
+  - GET : String <<static, final>>
+  - STORE : String <<static, final>>
+
+  + canProcess(instruction: Instruction) : Result<?>
+  + process(units: ProcessingUnit[], storedValue: Word, instruction: Instruction) : Result<?>
+  - findUnitWithMatchingAddress(units: ProcessingUnit[], address: Address) : Result<ProcessingUnit>
+}
+
+@enduml

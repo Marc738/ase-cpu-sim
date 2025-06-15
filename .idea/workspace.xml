@@ -5,40 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d46dcfa0-281f-4ba8-85f4-c950edbcab49" name="Changes" comment="More tests and updated doc">
-      <change afterPath="$PROJECT_DIR$/doc/clean-dhbw/ProjektUML.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/clean-dhbw/Tester.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/Main_structure.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/register/Register_structure.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/instruction/InstructionValue_structure.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/io/InputConverterTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/io/InputHandlerImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/decoder/command/GetCommandDecoderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/decoder/command/SetCommandDecoderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/units/control/decoder/command/StoreCommandDecoderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/clean-dhbw/acronyms.typ" beforeDir="false" afterPath="$PROJECT_DIR$/doc/clean-dhbw/acronyms.typ" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/clean-dhbw/main.typ" beforeDir="false" afterPath="$PROJECT_DIR$/doc/clean-dhbw/main.typ" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/CPUSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/CPUSimulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/InputConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/inputconverter/InputConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/InputConverterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/inputconverter/InputConverterImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/InputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/InputHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/InputHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/InputHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/OutputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/output/OutputHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/io/input/OutputHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/io/output/OutputHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/subunit/arithmetic/ArithmeticSubUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/alu/subunit/arithmetic/ArithmeticSubUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/utils/data/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ControlUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/ControlUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/Decoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dhbw/units/control/decoder/Decoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/io/OutputHandlerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/OutputHandlerImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/CommandTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/ControlUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/ControlUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/StorageManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/StorageManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/decoder/AddCommandDecoderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/decoder/command/AddCommandDecoderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/decoder/DecoderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/decoder/DecoderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/control/decoder/SubtractCommandDecoderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/control/decoder/command/SubtractCommandDecoderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/units/register/RegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/units/register/RegisterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,67 +73,67 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultPlantUmlFileTemplate": "UML Class",
-    "Gradle.ALUTest.executor": "Run",
-    "Gradle.ALUTest.testProcessAddition.executor": "Run",
-    "Gradle.ALUTest.testProcessSubtraction.executor": "Run",
-    "Gradle.ALUTest.testReadAndWrite.executor": "Run",
-    "Gradle.AddCommandDecoderTest.decode_shouldReturnInstructions_whenValidArgs.executor": "Run",
-    "Gradle.AddCommandDecoderTest.executor": "Debug",
-    "Gradle.AddOperatorTest.executor": "Run",
-    "Gradle.AddressResolverTest.executor": "Run",
-    "Gradle.AddressTest.executor": "Run",
-    "Gradle.ArgDecoderTest.executor": "Run",
-    "Gradle.ArgDecoderTest.testDecodeOnlyAddress.executor": "Run",
-    "Gradle.ArgDecoderTest.testDecodeOnlyWord.executor": "Run",
-    "Gradle.ArithmeticSubUnitTest.executor": "Run",
-    "Gradle.CommandTest.executor": "Run",
-    "Gradle.ControlUnitTest.executor": "Run",
-    "Gradle.ControlUnitTest.testProcessAddCommand.executor": "Run",
-    "Gradle.ControlUnitTest.testProcessInvalidCommand.executor": "Run",
-    "Gradle.ControlUnitTest.testProcessSetCommand.executor": "Run",
-    "Gradle.DecoderTest.decode_shouldReturnError_whenNoDecoderMatches.executor": "Run",
-    "Gradle.DecoderTest.decode_shouldReturnOk_whenMatchingDecoderExists.executor": "Run",
-    "Gradle.DecoderTest.executor": "Run",
-    "Gradle.DecoderTest.testeDecodeWithAddress.executor": "Run",
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.GetCommandDecoderTest.testInvalidKeyword.executor": "Run",
-    "Gradle.GetCommandDecoderTest.testMissingAddress.executor": "Run",
-    "Gradle.GetCommandDecoderTest.testValidDecode.executor": "Run",
-    "Gradle.InputConverterTest.testToCommand.executor": "Run",
-    "Gradle.InstructionValueParserTest.executor": "Run",
-    "Gradle.OutputHandlerImplTest.executor": "Run",
-    "Gradle.RegisterTest.executor": "Run",
-    "Gradle.RegisterTest.testCanNotProcess.executor": "Run",
-    "Gradle.RegisterTest.testProcessReturnsError.executor": "Run",
-    "Gradle.SetCommandDecoderTest.executor": "Run",
-    "Gradle.StorageManagerTest.executor": "Run",
-    "Gradle.StorageManagerTest.testeCanProcessSetErfolg.executor": "Run",
-    "Gradle.StorageManagerTest.testeCanProcessStoreErfolg.executor": "Run",
-    "Gradle.StorageManagerTest.testeCanProcessStoreOhneInstructionValue.executor": "Run",
-    "Gradle.StorageManagerTest.testeProcessErfolgreichMitZweiProcessingUnits.executor": "Run",
-    "Gradle.StorageManagerTest.testeProcessStoreErfolgreich.executor": "Run",
-    "Gradle.StorageSpaceTest.executor": "Run",
-    "Gradle.StorageSpaceTest.testStorageSpacesBuilderAdd.executor": "Run",
-    "Gradle.StorageSpaceTest.testStorageSpacesBuilderAddCount.executor": "Run",
-    "Gradle.StorageSpaceTest.testStorageSpacesBuilderAddFromTo.executor": "Run",
-    "Gradle.StoreCommandDecoderTest.executor": "Run",
-    "Gradle.SubtractCommandDecoderTest.executor": "Run",
-    "Gradle.SubtractOperatorTest.executor": "Run",
-    "Gradle.SubtractOperatorTest.testeSubtraktionMitBorrow.executor": "Run",
-    "Gradle.ValueParserTest.executor": "Run",
-    "Gradle.ase-cpu-sim [:Main.main()].executor": "Debug",
-    "Gradle.ase-cpu-sim [test].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "dev",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/marcschillinger/Documents/dev-remote/dhbw/ASE/ase-cpu-sim/src/main/java/de/dhbw",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Class&quot;,
+    &quot;Gradle.ALUTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ALUTest.testProcessAddition.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ALUTest.testProcessSubtraction.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ALUTest.testReadAndWrite.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AddCommandDecoderTest.decode_shouldReturnInstructions_whenValidArgs.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AddCommandDecoderTest.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.AddOperatorTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AddressResolverTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AddressTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ArgDecoderTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ArgDecoderTest.testDecodeOnlyAddress.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ArgDecoderTest.testDecodeOnlyWord.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ArithmeticSubUnitTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CommandTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ControlUnitTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ControlUnitTest.testProcessAddCommand.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ControlUnitTest.testProcessInvalidCommand.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ControlUnitTest.testProcessSetCommand.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DecoderTest.decode_shouldReturnError_whenNoDecoderMatches.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DecoderTest.decode_shouldReturnOk_whenMatchingDecoderExists.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DecoderTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DecoderTest.testeDecodeWithAddress.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GetCommandDecoderTest.testInvalidKeyword.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GetCommandDecoderTest.testMissingAddress.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GetCommandDecoderTest.testValidDecode.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.InputConverterTest.testToCommand.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.InstructionValueParserTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.OutputHandlerImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.RegisterTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.RegisterTest.testCanNotProcess.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.RegisterTest.testProcessReturnsError.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SetCommandDecoderTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StorageManagerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StorageManagerTest.testeCanProcessSetErfolg.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StorageManagerTest.testeCanProcessStoreErfolg.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StorageManagerTest.testeCanProcessStoreOhneInstructionValue.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StorageManagerTest.testeProcessErfolgreichMitZweiProcessingUnits.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StorageManagerTest.testeProcessStoreErfolgreich.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StorageSpaceTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StorageSpaceTest.testStorageSpacesBuilderAdd.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StorageSpaceTest.testStorageSpacesBuilderAddCount.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StorageSpaceTest.testStorageSpacesBuilderAddFromTo.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StoreCommandDecoderTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SubtractCommandDecoderTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SubtractOperatorTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SubtractOperatorTest.testeSubtraktionMitBorrow.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ValueParserTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ase-cpu-sim [:Main.main()].executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.ase-cpu-sim [test].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/marcschillinger/Documents/dev-remote/dhbw/ASE/ase-cpu-sim/src/main/java/de/dhbw&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/de/dhbw" />
