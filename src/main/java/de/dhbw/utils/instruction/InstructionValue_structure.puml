@@ -1,0 +1,62 @@
+@startuml
+
+class Address {
+  - index: int
+  - prefix: String
+  + defaultAddress()
+  + parseRawAddress(rawAddress: String): Result<Address>
+}
+
+class Word {
+  - value: boolean[]
+  + fromBinaryString(input: String): Result<Word>
+  + setValue(value: boolean[]): Result<?>
+}
+
+class Result<T> {
+  + error(e: Exception): Result<T>
+  + ok(): Result<T>
+  + ok(value: T): Result<T>
+}
+
+class Ok<T> {
+  - value: T
+}
+
+class Error<T> {
+  - exception: Exception
+}
+
+class Instruction {
+  - instructionValues: InstructionValue[]
+  - keyword: String
+}
+
+class InstructionValue {
+  - address: Address
+  - word: Word
+}
+
+class GetInstruction
+
+class SetInstruction
+
+class StoreInstruction
+
+class UnitInstruction
+
+' Beziehungen
+
+Instruction "1" -- "*" InstructionValue : instructionValues
+Instruction <--> GetInstruction
+Instruction <--> SetInstruction
+Instruction <--> StoreInstruction
+Instruction <--> UnitInstruction
+
+InstructionValue "0..1" --> "0..1" Address : address
+InstructionValue "0..1" --> "0..1" Word : word
+
+Result <--> Ok
+Result <--> Error
+
+@enduml

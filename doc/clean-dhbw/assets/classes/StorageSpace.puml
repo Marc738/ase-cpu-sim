@@ -1,0 +1,11 @@
+@startuml
+class StorageSpace {
+    - address: Address
+    - word: Word
+    + StorageSpace(address: Address, word: Word)
+    + StorageSpace(address: Address)
+    + getAddress(): Address
+    + getWord(): Word
+    + setWord(word: Word): void
+}
+@enduml

@@ -1,0 +1,1 @@
+for f in /Users/marcschillinger/Documents/dev-remote/dhbw/ASE/ase-cpu-sim/doc/clean-dhbw/assets/svg/*.puml; do plantuml -tsvg $f; done

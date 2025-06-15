@@ -1,0 +1,46 @@
+@startuml
+
+interface InputHandler {
+  + read() : String
+}
+
+class InputHandlerImpl {
+  - keyboard : Scanner
+  + InputHandlerImpl()
+  + read() : String
+}
+
+InputHandlerImpl ..|> InputHandler
+InputHandlerImpl --> Scanner
+
+interface OutputHandler {
+  + print(Result<?> result)
+}
+
+class OutputHandlerImpl {
+  + OutputHandlerImpl()
+  + print(Result<?> result)
+}
+
+OutputHandlerImpl ..|> OutputHandler
+
+interface InputConverter {
+  + toCommand(String input) : Command
+}
+
+
+class CPUSimulator {
+  - controlUnit : ControlUnit
+  - inputHandler : InputHandler
+  - outputHandler : OutputHandler
+  - inputConverter : InputConverter
+  - exitCommand : String
+  + CPUSimulator(...)
+  + run() : void
+}
+
+CPUSimulator --> InputHandler
+CPUSimulator --> OutputHandler
+CPUSimulator --> InputConverter
+
+@enduml

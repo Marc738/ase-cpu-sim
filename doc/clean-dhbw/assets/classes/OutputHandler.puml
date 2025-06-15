@@ -1,0 +1,14 @@
+@startuml
+
+interface OutputHandler {
+  + print(Result<?> result)
+}
+
+class OutputHandlerImpl {
+  + OutputHandlerImpl()
+  + print(Result<?> result)
+}
+
+OutputHandlerImpl ..|> OutputHandler
+
+@enduml

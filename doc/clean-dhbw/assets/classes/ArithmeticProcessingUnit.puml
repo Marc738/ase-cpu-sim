@@ -1,0 +1,31 @@
+@startuml
+
+abstract class Operator {
+  # keyword : String
+  + Operator(keyword: String)
+  + canProcess(requestKeyword: String) : Result<?>
+  + process(op1: Word, op2: Word) : OperatorResult <<abstract>>
+}
+
+class ArithmeticSubUnit {
+  - operators : Operator[]
+  + ArithmeticSubUnit()
+  + canProcess(keyword: String) : Result<?>
+  + process(keyword: String, op1: Word, op2: Word) : Result<OperatorResult>
+}
+
+class AddOperator {
+  + AddOperator()
+  + process(op1: Word, op2: Word) : OperatorResult
+}
+
+class SubtractOperator {
+  + SubtractOperator()
+  + process(op1: Word, op2: Word) : OperatorResult
+}
+
+AddOperator --|> Operator
+SubtractOperator --|> Operator
+ArithmeticSubUnit --> Operator
+
+@enduml

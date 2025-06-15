@@ -1,0 +1,17 @@
+@startuml
+
+abstract class CommandDecoder {
+  # keyword : String <<final>>
+  + CommandDecoder(keyword: String)
+  + decode(keyword: String, instructionValues: InstructionValue[]) : Result<Instruction[]> <<abstract>>
+}
+
+class AddCommandDecoder {
+  + AddCommandDecoder()
+  + decode(keyword: String, instructionValues: InstructionValue[]) : Result<Instruction[]>
+  + canDecodeCommand(keyword: String, instructionValues: InstructionValue[]) : boolean
+}
+
+CommandDecoder <|-- AddCommandDecoder
+
+@enduml

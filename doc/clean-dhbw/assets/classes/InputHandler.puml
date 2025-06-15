@@ -1,0 +1,16 @@
+@startuml
+
+interface InputHandler {
+  + read() : String
+}
+
+class InputHandlerImpl {
+  - keyboard : Scanner
+  + InputHandlerImpl()
+  + read() : String
+}
+
+InputHandlerImpl ..|> InputHandler
+InputHandlerImpl --> Scanner
+
+@enduml

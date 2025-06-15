@@ -1,0 +1,21 @@
+@startuml
+
+class ControlUnit {
+  - processingUnits : ProcessingUnit[]
+  - decoder : Decoder
+  - storageManager : StorageManager
+  - storedValue : Word
+
+  + ControlUnit(ProcessingUnit[], Decoder, StorageManager, Word)
+  + process(Command) : Result<?>
+  - processInstructions(Instruction[]) : Result<?>
+  - processInstructionInStorageManager(Instruction) : Result
+  - processInstructionInProcessingUnit(Instruction) : Result<?>
+  - findMatchingProcessingUnit(Instruction) : Result<ProcessingUnit>
+}
+
+ControlUnit --> "1" Decoder
+ControlUnit --> "1" StorageManager
+ControlUnit --> "1..*" ProcessingUnit
+
+@enduml

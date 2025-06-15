@@ -1,0 +1,17 @@
+@startuml
+
+class ControlUnit {
+  - processingUnits : ProcessingUnit[]
+  - decoder : Decoder
+  - storageManager : StorageManager
+  - storedValue : Word
+  + ControlUnit(...)
+  + process(command : Command) : Result<?>
+}
+
+CPUSimulator --> ControlUnit
+ControlUnit o-- "1..*" ProcessingUnit
+ControlUnit --> Decoder
+ControlUnit --> StorageManager
+
+@enduml

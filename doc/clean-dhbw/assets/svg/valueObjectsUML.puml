@@ -1,0 +1,57 @@
+@startuml ValueObjects
+
+class Address {
+  - index: int
+  - prefix: String
+  + defaultAddress(): Address
+  + parseRawAddress(String): Result<Address>
+}
+
+class Command {
+    - keyword: String
+    - args: List<String>
+    + getKeyword(): String
+    + getArgs(): List<String>
+    + fromString(input: String): Command
+}
+
+class Word {
+  - value: boolean[]
+  + fromBinaryString(String): Result<Word>
+  + setValue(boolean[]): Result<?>
+}
+
+class Instruction {
+    - String keyword
+    - InstructionValue[] instructionValues
+    + Instruction(String keyword, InstructionValue[] instructionValues)
+    + String getKeyword()
+    + InstructionValue[] getValues()
+    + String toString()
+}
+
+class GetInstruction {
+    + GetInstruction(Address targetAddress)
+}
+
+class SetInstruction {
+    + SetInstruction(Address targetAddress)
+}
+
+class StoreInstruction {
+    + StoreInstruction(Word word)
+}
+
+class InstructionValue {
+    - Address address
+    - Word word
+    + InstructionValue(Address address, Word word)
+    + Address getAddress()
+    + Word getWord()
+}
+
+Instruction <|-- GetInstruction
+Instruction <|-- SetInstruction
+Instruction <|-- StoreInstruction
+
+@enduml
