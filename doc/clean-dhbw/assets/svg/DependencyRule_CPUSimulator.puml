@@ -1,0 +1,29 @@
+@startuml
+
+class CPUSimulator {
+  - controlUnit : ControlUnit
+  - inputHandler : InputHandler
+  - outputHandler : OutputHandler
+  - inputConverter : InputConverter
+  - resultHandler : ResultHandler
+  - exitCommand : String
+  + CPUSimulator(ProcessingUnit[], ControlUnit, InputHandler, OutputHandler, InputConverter, ResultHandler)
+  + run() : void
+}
+
+class ControlUnit {
+  - processingUnits : ProcessingUnit[]
+  - decoder : Decoder
+  - storageManager : StorageManager
+  - storedValue : Word
+  + ControlUnit(ProcessingUnit[], Decoder, StorageManager, Word)
+  + process(Command) : Result<?>
+  - processInstructions(Instruction[]) : Result<?>
+  - processInstructionInStorageManager(Instruction) : Result
+  - processInstructionInProcessingUnit(Instruction) : Result<?>
+  - findMatchingProcessingUnit(Instruction) : Result<ProcessingUnit>
+}
+
+CPUSimulator --> ControlUnit
+
+@enduml
